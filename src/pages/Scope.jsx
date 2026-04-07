@@ -97,12 +97,12 @@ const TrackCard = ({ track, idx }) => {
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.6, delay: idx * 0.07 }}
       style={{
-        background: 'rgba(30,41,59,0.55)',
-        border: `1px solid ${track.color}33`,
+        background: 'var(--glass-bg)',
+        border: `1px solid var(--glass-border)`,
         borderLeft: `5px solid ${track.color}`,
-        borderRadius: '18px',
+        borderRadius: '16px',
         overflow: 'hidden',
-        backdropFilter: 'blur(10px)',
+        boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
       }}
     >
       {/* Track Header - always visible */}
@@ -118,10 +118,10 @@ const TrackCard = ({ track, idx }) => {
             {track.id}
           </div>
           <div>
-            <p style={{ color: track.color, fontSize: '0.8rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '0.25rem' }}>
+            <p style={{ color: track.color, fontSize: '0.8rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1.5px', margin: '0 0 0.5rem 0' }}>
               Track {track.id}
             </p>
-            <h3 style={{ fontSize: '1.25rem', color: '#f1f5f9', fontWeight: '700', lineHeight: '1.4' }}>
+            <h3 style={{ fontSize: '1.3rem', color: 'white', fontWeight: '800', lineHeight: '1.4', margin: 0 }}>
               {track.title}
             </h3>
           </div>
@@ -132,14 +132,14 @@ const TrackCard = ({ track, idx }) => {
           style={{
             display: 'flex', alignItems: 'center', gap: '0.5rem',
             padding: '0.6rem 1.4rem', borderRadius: '30px',
-            background: expanded ? `${track.color}22` : 'transparent',
-            border: `1.5px solid ${track.color}66`,
+            background: expanded ? `${track.color}22` : 'rgba(255,255,255,0.05)',
+            border: `1.5px solid ${track.color}44`,
             color: track.color, fontWeight: '700', fontSize: '0.88rem',
             cursor: 'pointer', transition: 'all 0.25s', whiteSpace: 'nowrap',
             fontFamily: 'inherit'
           }}
-          onMouseEnter={e => { e.currentTarget.style.background = `${track.color}33`; }}
-          onMouseLeave={e => { e.currentTarget.style.background = expanded ? `${track.color}22` : 'transparent'; }}
+          onMouseEnter={e => { e.currentTarget.style.background = `${track.color}22`; }}
+          onMouseLeave={e => { e.currentTarget.style.background = expanded ? `${track.color}22` : 'rgba(255,255,255,0.05)'; }}
         >
           {expanded ? '▲ Show Less' : '▼ View More'}
         </button>
@@ -181,10 +181,9 @@ const TrackCard = ({ track, idx }) => {
                   >
                     <div style={{
                       width: '10px', height: '10px', borderRadius: '50%',
-                      background: track.color, marginTop: '5px', flexShrink: 0,
-                      boxShadow: `0 0 6px ${track.color}`
+                      background: track.color, marginTop: '5px', flexShrink: 0
                     }} />
-                    <span style={{ color: '#cbd5e1', fontSize: '0.95rem', lineHeight: '1.5' }}>{item}</span>
+                    <span style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.5', fontWeight: '500' }}>{item}</span>
                   </motion.div>
                 ))}
               </div>
@@ -206,19 +205,20 @@ const Scope = () => {
       style={{ paddingTop: '100px' }}
     >
       {/* Header */}
-      <section style={{ padding: '5rem 0', background: 'linear-gradient(180deg, #0f172a 0%, #020617 100%)', textAlign: 'center' }}>
-        <div className="container">
+      <section style={{ padding: '5rem 0', background: 'transparent', textAlign: 'center' }}>
+        <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <motion.div variants={sectionVariants} initial="hidden" animate="visible">
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem' }}>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem', color: 'white', fontWeight: '800' }}>
               Scope of the{' '}
-              <span style={{ background: 'linear-gradient(135deg,#38bdf8,#818cf8)', WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+              <span style={{ color: 'var(--primary-color)' }}>
                 Conference
               </span>
             </h1>
+            <div style={{ width: '60px', height: '4px', background: 'var(--primary-color)', margin: '1rem auto' }}></div>
             <p style={{ color: 'var(--text-secondary)', fontSize: '1.15rem', maxWidth: '900px', margin: '0 auto', lineHeight: '1.9' }}>
               AISTEMEDU 2026 aims to foster interdisciplinary research that advances AI applications in education,
               computational sciences, humanities, and sustainable technologies. Aligned with{' '}
-              <strong style={{ color: 'var(--accent-color)' }}>Saudi Vision 2030</strong>, the conference brings
+              <strong style={{ color: 'var(--primary-color)' }}>Saudi Vision 2030</strong>, the conference brings
               together academia, industry, and policymakers to explore AI-driven innovations that enhance learning
               methodologies, optimize smart systems, and promote ethical AI adoption for societal transformation.
             </p>
@@ -227,14 +227,15 @@ const Scope = () => {
       </section>
 
       {/* Key Focus Areas */}
-      <section style={{ padding: '4rem 0', background: '#0f172a' }}>
+      <section style={{ padding: '4rem 0', background: 'rgba(255,255,255,0.02)' }}>
         <div className="container">
           <motion.div variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <h2 style={{ fontSize: '2.2rem', marginBottom: '2rem', textAlign: 'center' }}>
-              Key Focus <span style={{ color: 'var(--accent-color)' }}>Areas</span>
+            <h2 style={{ fontSize: '2.5rem', marginBottom: '2rem', textAlign: 'center', color: 'white', fontWeight: '800' }}>
+              Key Focus <span style={{ color: 'var(--primary-color)' }}>Areas</span>
             </h2>
+            <div style={{ width: '60px', height: '4px', background: 'var(--primary-color)', margin: '1rem auto' }}></div>
           </motion.div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', marginTop: '3rem' }}>
             {[
               { title: "AI for Education", desc: "Advancing AI-driven learning methodologies, intelligent tutoring systems, and adaptive educational technologies to enhance student engagement and knowledge acquisition." },
               { title: "Computational & Mathematical Modeling", desc: "Exploring advanced mathematical and computational techniques to optimize AI applications, driving economic diversification and technological progress." },
@@ -249,10 +250,10 @@ const Scope = () => {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -6 }}
-                style={{ background: 'rgba(30,41,59,0.5)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '14px', padding: '2rem', backdropFilter: 'blur(10px)' }}
+                style={{ background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '2rem', boxShadow: '0 10px 30px rgba(0,0,0,0.2)' }}
               >
-                <h3 style={{ color: 'var(--accent-color)', marginBottom: '0.75rem', fontSize: '1.1rem' }}>{area.title}</h3>
-                <p style={{ color: 'var(--text-secondary)', lineHeight: '1.7', fontSize: '0.95rem' }}>{area.desc}</p>
+                <h3 style={{ color: 'var(--primary-color)', marginBottom: '0.75rem', fontSize: '1.2rem', fontWeight: '800' }}>{area.title}</h3>
+                <p style={{ color: 'var(--text-secondary)', lineHeight: '1.7', fontSize: '1rem' }}>{area.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -260,14 +261,15 @@ const Scope = () => {
       </section>
 
       {/* 6 Expandable Tracks */}
-      <section style={{ padding: '5rem 0', background: 'var(--background-dark)' }}>
+      <section style={{ padding: '5rem 0', background: 'transparent' }}>
         <div className="container">
           <motion.div variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <h2 style={{ fontSize: '2.5rem' }}>
-              Conference <span style={{ color: 'var(--accent-color)' }}>Tracks</span>
+            <h2 style={{ fontSize: '2.5rem', color: 'white', fontWeight: '800' }}>
+              Conference <span style={{ color: 'var(--primary-color)' }}>Tracks</span>
             </h2>
-            <p style={{ color: 'var(--text-secondary)', marginTop: '1rem', fontSize: '1.05rem' }}>
-              6 specialized tracks — click <strong style={{ color: 'var(--accent-color)' }}>View More</strong> on any track to see all sub-topics.
+            <div style={{ width: '60px', height: '4px', background: 'var(--primary-color)', margin: '1rem auto' }}></div>
+            <p style={{ color: 'var(--text-secondary)', marginTop: '1rem', fontSize: '1.1rem' }}>
+              6 specialized tracks — click <strong style={{ color: 'white' }}>View More</strong> on any track to see all sub-topics.
             </p>
           </motion.div>
 
@@ -280,13 +282,14 @@ const Scope = () => {
       </section>
 
       {/* CTA */}
-      <section style={{ padding: '5rem 0', background: '#0f172a', textAlign: 'center' }}>
+      <section style={{ padding: '5rem 0', background: 'var(--glass-bg)', borderTop: '1px solid var(--glass-border)', textAlign: 'center' }}>
         <div className="container">
           <motion.div variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ maxWidth: '750px', margin: '0 auto' }}>
-            <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem' }}>
-              Join us in shaping the future of <span style={{ color: 'var(--accent-color)' }}>responsible AI</span> development
+            <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', color: 'white' }}>
+              Join us in shaping the future of <span style={{ color: 'var(--primary-color)' }}>responsible AI</span> development
             </h2>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', marginBottom: '2.5rem' }}>
+            <div style={{ width: '60px', height: '4px', background: 'var(--primary-color)', margin: '1rem auto' }}></div>
+            <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1.1rem', marginBottom: '2.5rem', lineHeight: '1.6' }}>
               By uniting academia, industry, and policymakers, AISTEMEDU 2026 aims to explore groundbreaking solutions
               that contribute to technological progress, sustainable growth, and societal transformation.
             </p>

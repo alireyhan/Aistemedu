@@ -43,16 +43,17 @@ const Accommodation = () => {
       className="container"
     >
       <div className="text-center" style={{ marginBottom: '4rem' }}>
-        <h1 className="hero-title text-gradient">Accommodation</h1>
-        <p className="hero-subtitle">Recommended hotels for the IEEE Conference organized by PMU.</p>
+        <h1 style={{ fontSize: '3rem', color: 'var(--secondary-color)', fontWeight: '800' }}>Accommodation</h1>
+        <div style={{ width: '60px', height: '4px', background: 'var(--primary-color)', margin: '1rem auto' }}></div>
+        <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem' }}>Recommended hotels for the IEEE Conference organized by PMU.</p>
       </div>
 
       <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
         {hotels.map((hotel, index) => (
-          <motion.div key={index} variants={itemVariants} className="glass-panel" style={{ display: 'flex', flexDirection: 'column' }}>
-            <h3 style={{ fontSize: '1.4rem', color: 'var(--accent-color)', marginBottom: '1rem' }}>{hotel.name}</h3>
+          <motion.div key={index} variants={itemVariants} style={{ background: 'var(--glass-bg)', borderRadius: '16px', border: '1px solid var(--glass-border)', backdropFilter: 'blur(10px)', boxShadow: '0 10px 30px rgba(0,0,0,0.2)', padding: '2rem', display: 'flex', flexDirection: 'column' }}>
+            <h3 style={{ fontSize: '1.4rem', color: 'var(--text-primary)', marginBottom: '1rem' }}>{hotel.name}</h3>
             <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem', flex: 1 }}>{hotel.address}</p>
-            <div style={{ padding: '1rem', background: 'var(--secondary-color)', borderRadius: '8px', marginBottom: '1.5rem', fontWeight: '600' }}>
+            <div style={{ padding: '1rem', background: 'rgba(255,255,255,0.03)', color: 'var(--primary-color)', borderRadius: '8px', marginBottom: '1.5rem', fontWeight: '800', border: '1px solid var(--glass-border)' }}>
               📞 {hotel.phone}
             </div>
             <a href={hotel.mapLink} target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ display: 'block', width: '100%', textAlign: 'center' }}>

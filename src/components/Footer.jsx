@@ -57,11 +57,11 @@ const Footer = () => {
               </li>
               <li style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', marginTop: '1rem' }}>
                 <Mail size={20} style={{ color: 'var(--accent-color)' }} />
-                <span>info@aistemedu.org</span>
+                <span>aistemedu@pmu.edu.sa</span>
               </li>
               <li style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', marginTop: '1rem' }}>
                 <Phone size={20} style={{ color: 'var(--accent-color)' }} />
-                <span>+966 13 849 9239</span>
+                <span>+966 54 857 4636</span>
               </li>
             </ul>
           </div>

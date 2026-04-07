@@ -7,10 +7,21 @@ const Header = () => {
   const location = useLocation();
   const isActive = (path) => location.pathname === path;
 
+  const [scrolled, setScrolled] = useState(false);
+
   // Close menu on route change
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);
+
+  // Handle scroll for navbar background
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Prevent scroll when menu is open
   useEffect(() => {
@@ -22,11 +33,10 @@ const Header = () => {
   }, [isMenuOpen]);
 
   const importantDates = [
-    { label: "Paper Submission", date: "March 15, 2026" },
-    { label: "Notification Date", date: "April 10, 2026" },
-    { label: "Registration Early Bird", date: "April 20, 2026" },
-    { label: "Camera Ready", date: "April 25, 2026" },
-    { label: "Conference Days", date: "May 20-21, 2026" }
+    { label: "Paper Submission", date: "August 15, 2026" },
+    { label: "Notification Date", date: "September 15, 2026" },
+    { label: "Camera Ready", date: "September 30, 2026" },
+    { label: "Conference Days", date: "October 26-27, 2026" }
   ];
 
   return (
@@ -52,7 +62,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <nav className="navbar">
+      <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
         <div className="container nav-container">
           <Link to="/" className="nav-logo text-gradient">
             AISTEMEDU 2026
