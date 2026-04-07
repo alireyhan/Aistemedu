@@ -134,7 +134,7 @@ const Home = () => {
   return (
     <div style={{ overflow: 'hidden' }}>
       {/* 1. HERO SECTION */}
-      <section className="hero-section" style={{ position: 'relative' }}>
+      <section className="hero-section" style={{ position: 'relative', paddingTop: 'calc(var(--banner-height) + 120px)' }}>
         <ThreeBackground />
         <div className="container" style={{ position: 'relative', zIndex: 10 }}>
           <motion.div 
@@ -146,7 +146,19 @@ const Home = () => {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              style={{ display: 'inline-block', padding: '0.5rem 1.5rem', background: 'rgba(56, 189, 248, 0.1)', border: '1px solid rgba(56, 189, 248, 0.3)', borderRadius: '30px', color: 'var(--accent-color)', fontWeight: '700', marginBottom: '1.5rem', letterSpacing: '2px', backdropFilter: 'blur(5px)' }}
+              style={{ 
+                display: 'inline-block', 
+                padding: '0.5rem 1.5rem', 
+                background: 'rgba(56, 189, 248, 0.1)', 
+                border: '1px solid rgba(56, 189, 248, 0.3)', 
+                borderRadius: '30px', 
+                color: 'var(--accent-color)', 
+                fontWeight: '700', 
+                marginBottom: '1.5rem', 
+                marginTop: '1rem', // Added margin to push away from top
+                letterSpacing: '2px', 
+                backdropFilter: 'blur(5px)' 
+              }}
             >
               MAY 17-18, 2026 • PMU, AL KHOBAR
             </motion.div>
@@ -302,7 +314,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 4. CALL FOR PAPERS SECTION (NEW) */}
+      {/* 4. CALL FOR PAPERS SECTION */}
       <section className="section" style={{ background: '#0f172a' }}>
         <div className="container">
           <motion.div variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ textAlign: 'center', marginBottom: '4rem' }}>
@@ -312,7 +324,7 @@ const Home = () => {
             </p>
           </motion.div>
 
-          <div className="paper-dates-grid">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2.5rem', marginBottom: '4rem' }}>
             {[
               { label: "Paper Submission", date: "March 15, 2026" },
               { label: "Acceptance", date: "April 10, 2026" },
@@ -324,12 +336,36 @@ const Home = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '24px', padding: '3rem 1.5rem', textAlign: 'center', border: '1px solid rgba(255,255,255,0.05)', position: 'relative', marginTop: '30px' }}
+                style={{ 
+                  background: 'rgba(30, 41, 59, 0.4)', 
+                  borderRadius: '24px', 
+                  padding: '3.5rem 1.5rem 2.5rem', 
+                  textAlign: 'center', 
+                  border: '1px solid rgba(255, 255, 255, 0.05)', 
+                  position: 'relative',
+                  backdropFilter: 'blur(10px)'
+                }}
               >
-                <div style={{ width: '60px', height: '60px', background: '#0284c7', borderRadius: '50%', position: 'absolute', top: '-30px', left: '50%', transform: 'translateX(-50%)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 20px rgba(2, 132, 199, 0.4)' }}></div>
-                <h3 style={{ fontSize: '1.3rem', marginBottom: '1rem', marginTop: '10px' }}>{item.label}</h3>
-                <div style={{ height: '1px', background: 'rgba(255,255,255,0.1)', width: '60%', margin: '1.5rem auto' }}></div>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>{item.date}</p>
+                <div style={{ 
+                  width: '50px', 
+                  height: '50px', 
+                  background: 'linear-gradient(135deg, #0284c7, #38bdf8)', 
+                  borderRadius: '50%', 
+                  position: 'absolute', 
+                  top: '-25px', 
+                  left: '50%', 
+                  transform: 'translateX(-50%)', 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'center', 
+                  boxShadow: '0 8px 16px rgba(2, 132, 199, 0.3)',
+                  zIndex: 2
+                }}>
+                  <div style={{ width: '12px', height: '12px', background: 'white', borderRadius: '50%' }}></div>
+                </div>
+                <h3 style={{ fontSize: '1.2rem', marginBottom: '1rem', color: 'white' }}>{item.label}</h3>
+                <div style={{ height: '2px', background: 'linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.3), transparent)', width: '80%', margin: '1.5rem auto' }}></div>
+                <p style={{ color: 'var(--accent-color)', fontSize: '1rem', fontWeight: '700' }}>{item.date}</p>
               </motion.div>
             ))}
           </div>
@@ -492,18 +528,18 @@ const Home = () => {
             <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', marginTop: '1rem' }}>Experience the vibrant hub of the Eastern Province of Saudi Arabia.</p>
           </motion.div>
 
-          <motion.div variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="city-grid-wrapper">
-            <div className="city-image-container" style={{ borderRadius: '16px', overflow: 'hidden' }}>
-              <motion.img 
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.5 }}
-                src="https://images.pexels.com/photos/373409/pexels-photo-373409.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                alt="Khobar 1" 
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-              />
-            </div>
-            <div className="paper-dates-grid" style={{ gap: '2rem', marginBottom: '0' }}>
-              <div className="city-image-container" style={{ borderRadius: '16px', overflow: 'hidden' }}>
+          <motion.div variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            <div className="city-grid">
+              <div className="city-image-wrapper">
+                <motion.img 
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.5 }}
+                  src="https://images.pexels.com/photos/373409/pexels-photo-373409.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                  alt="Khobar 1" 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                />
+              </div>
+              <div className="city-image-wrapper">
                 <motion.img 
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.5 }}
@@ -512,7 +548,7 @@ const Home = () => {
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
                 />
               </div>
-              <div className="city-image-container" style={{ borderRadius: '16px', overflow: 'hidden' }}>
+              <div className="city-image-wrapper">
                 <motion.img 
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.5 }}

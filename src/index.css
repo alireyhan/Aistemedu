@@ -15,6 +15,49 @@
   --banner-height: 34px;
 }
 
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  padding-top: calc(var(--banner-height) + 100px);
+  padding-bottom: 4rem;
+}
+
+.three-canvas-container {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 100px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.city-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.city-image-wrapper {
+  aspect-ratio: 16/9;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--secondary-color);
+}
+
+@media (max-width: 992px) {
+  .city-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .dates-banner {
   position: fixed;
   top: 0;
