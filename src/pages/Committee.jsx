@@ -1,0 +1,565 @@
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+import { ExternalLink, ChevronDown, ChevronUp } from 'lucide-react';
+
+const committees = [
+  {
+    title: "Honorary Chair",
+    color: "#f59e0b",
+    members: [
+      { name: "Dr. Issa H. Al Ansari", role: "President", affiliation: "PMU, Saudi Arabia", photoUrl: "https://www.pmu.edu.sa/about/biography-of-president", image: "https://www.pmu.edu.sa/images/board-of-trustees/Dr-Issa.PNG" }
+    ]
+  },
+  {
+    title: "Conference Chair",
+    color: "#0284c7",
+    members: [
+      { name: "Dr. Faisal Yousif Al Anezi", role: "Vice President Academic Affairs", affiliation: "PMU, Saudi Arabia", photoUrl: "https://wfsf2023paris.org/speaker/dr-faisal-yousif-al-anezi/", image: "https://wfsf2023paris.org/wp-content/uploads/2023/10/Dr.-Faisal-foto.jpg" }
+    ]
+  },
+  {
+    title: "Deputy Conference Chairs",
+    color: "#0ea5e9",
+    members: [
+      { name: "Dr. Muhammad Waqar Ashraf", role: "Dean, College of Science & Human Studies", affiliation: "PMU, Saudi Arabia", photoUrl: "https://faculty.pmu.edu.sa/PMUFaculties/Details/mashraf", image: "https://faculty.pmu.edu.sa/Admin/Upload/Faculty_PIC/635308147823663283_PIC_Dr-Waqar.png" }
+    ]
+  },
+  {
+    title: "Steering Committee",
+    color: "#7c3aed",
+    members: [
+      { name: "Dr. Shakir M. Usman", role: "Chair", affiliation: "PMU, Saudi Arabia", photoUrl: "https://faculty.pmu.edu.sa/PMUFaculties/Details/susman", image: "https://faculty.pmu.edu.sa/Admin/Upload/Faculty_PIC/133287982968718728__MG_7635.JPG" },
+      { name: "Dr. Siddiqua Aamir", role: "Co-Chair", affiliation: "PMU, Saudi Arabia" },
+      { name: "Dr. Irfan Siap", role: "Member", affiliation: "PMU, Saudi Arabia" },
+      { name: "Dr. Lila Ali Al Hashem", role: "Member", affiliation: "PMU, Saudi Arabia" },
+      { name: "Dr. Taha Rajab", role: "Member", affiliation: "PMU, Saudi Arabia" },
+      { name: "Dr. Tynan Byrne Kelly", role: "Member", affiliation: "PMU, Saudi Arabia" },
+      { name: "Dr. Alia Amir", role: "Member", affiliation: "PMU, Saudi Arabia" }
+    ]
+  },
+  {
+    title: "Technical Committee",
+    color: "#dc2626",
+    members: [
+      { name: "Dr. Sagheer Abbas", role: "Chair", affiliation: "PMU, Saudi Arabia", photoUrl: "https://faculty.pmu.edu.sa/pmufaculties/Details/sabbas", image: "https://faculty.pmu.edu.sa/Admin/Upload/Faculty_PIC/133910988284949030_Linkedin.jpg" },
+      { name: "Dr. Najma Saleem", role: "Co-Chair", affiliation: "PMU, Saudi Arabia" },
+      { name: "Dr. Laura Strachan", role: "Member", affiliation: "PMU, Saudi Arabia" },
+      { name: "Dr. Edyta Wolny", role: "Member", affiliation: "PMU, Saudi Arabia" },
+      { name: "Dr. Bachar Bernard Tarraf", role: "Member", affiliation: "PMU, Saudi Arabia" }
+    ]
+  },
+  {
+    title: "Treasurer Committee",
+    color: "#059669",
+    members: [
+      { name: "Dr. Nidal Abu-Libdeh", role: "Chair", affiliation: "PMU, Saudi Arabia", photoUrl: "https://faculty.pmu.edu.sa/PMUFaculties/Details/nabulibdeh", image: "https://faculty.pmu.edu.sa/Admin/Upload/Faculty_PIC/134194976329198039_NIdal_Profile_Photo_A.png" },
+      { name: "Dr. Azhar Iqbal", role: "Member", affiliation: "PMU, Saudi Arabia" }
+    ]
+  },
+  {
+    title: "Program Committee",
+    color: "#0891b2",
+    members: [
+      { name: "Dr. Jose Penalva", role: "Chair", affiliation: "PMU, Saudi Arabia" },
+      { name: "Dr. Khadija El Alaoui", role: "Co-Chair", affiliation: "PMU, Saudi Arabia" },
+      { name: "Dr. Heba Alamr", role: "Member", affiliation: "PMU, Saudi Arabia" },
+      { name: "Dr. Adam Jones", role: "Member", affiliation: "PMU, Saudi Arabia" },
+      { name: "Dr. Ozan Altan Altinok", role: "Member", affiliation: "PMU, Saudi Arabia" },
+      { name: "Dr. Kelechukwu Uchechukwu Ihemere", role: "Member", affiliation: "PMU, Saudi Arabia" }
+    ]
+  },
+  {
+    title: "Publicity Committee",
+    color: "#db2777",
+    members: [
+      { name: "Dr. Mirna Khalife", role: "Chair", affiliation: "PMU, Saudi Arabia", photoUrl: "https://faculty.pmu.edu.sa/PMUFaculties/Details/mkhalife1", image: "https://faculty.pmu.edu.sa/Admin/Upload/Faculty_PIC/134159923134583433_Snapchat-180434212.jpg" },
+      { name: "Mr. Mohammed Ali Al-Dawood", role: "Co-Chair, Associate Director University Media Center", affiliation: "PMU, Saudi Arabia" },
+      { name: "Dr. Antonino Crisa", role: "Member", affiliation: "PMU, Saudi Arabia" },
+      { name: "Dr. Dilsad Ahmed", role: "Member", affiliation: "PMU, Saudi Arabia" },
+      { name: "Dr. Maryam Bo Julaia", role: "Member", affiliation: "PMU, Saudi Arabia" }
+    ]
+  },
+  {
+    title: "Hospitality Committee",
+    color: "#d97706",
+    members: [
+      { name: "Dr. Hanadi Abdelsalam", role: "Chair", affiliation: "PMU, Saudi Arabia", photoUrl: "https://faculty.pmu.edu.sa/PMUFaculties/Details/habdelsalam", image: "https://faculty.pmu.edu.sa/Admin/Upload/Faculty_PIC/134189007807371910_Profile_picture.jpeg" },
+      { name: "Dr. Tahani Mohammed Albogami", role: "Co-Chair", affiliation: "PMU, Saudi Arabia" },
+      { name: "Dr. Russina Abdalla Eltoum", role: "Member", affiliation: "PMU, Saudi Arabia" },
+      { name: "Ms. Tabassum Ashfaq", role: "Member", affiliation: "PMU, Saudi Arabia" },
+      { name: "Ms. Farheen Anjum", role: "Member", affiliation: "PMU, Saudi Arabia" },
+      { name: "Ms. Rajaa Abdulrahman", role: "Member", affiliation: "PMU, Saudi Arabia" }
+    ]
+  },
+  {
+    title: "Conference Secretary",
+    color: "#0284c7",
+    members: [
+      { name: "Dr. Jason Sparkes", role: "Conference Secretary", affiliation: "PMU, Saudi Arabia", photoUrl: "https://faculty.pmu.edu.sa/PMUFaculties/Details/jsparkes", image: "https://faculty.pmu.edu.sa/Admin/Upload/Faculty_PIC/133547404450296704_Sparkes_Photo.jpg" }
+    ]
+  },
+  {
+    title: "Publication Committee",
+    color: "#6366f1",
+    members: [
+      { name: "Dr. Shakir M. Usman", role: "Chair", affiliation: "PMU, Saudi Arabia", photoUrl: "https://faculty.pmu.edu.sa/PMUFaculties/Details/susman", image: "https://faculty.pmu.edu.sa/Admin/Upload/Faculty_PIC/133287982968718728__MG_7635.JPG" },
+      { name: "Eng. Samar Dernayka", role: "Co-Chair", affiliation: "PMU, Saudi Arabia" },
+      { name: "Dr. Olga Burukina", role: "Member", affiliation: "PMU, Saudi Arabia" },
+      { name: "Dr. Saira Waheed", role: "Member", affiliation: "PMU, Saudi Arabia" }
+    ]
+  },
+  {
+    title: "Scientific Committee",
+    color: "#8b5cf6",
+    members: [
+      { name: "Dr. Joel Craig Richmond", role: "Chair", affiliation: "PMU, Saudi Arabia", photoUrl: "https://faculty.pmu.edu.sa/PMUFaculties/Details/jrichmond", image: "https://faculty.pmu.edu.sa/Admin/Upload/Faculty_PIC/133699043912731114_Picture_Bio.jpg" },
+      { name: "Dr. Hanadi Abdelsalam", role: "Co-Chair", affiliation: "PMU, Saudi Arabia", photoUrl: "https://faculty.pmu.edu.sa/PMUFaculties/Details/habdelsalam", image: "https://faculty.pmu.edu.sa/Admin/Upload/Faculty_PIC/134189007807371910_Profile_picture.jpeg" },
+      { name: "Abdul Basit Siddiqui", role: "Member", affiliation: "Capital University of Science & Technology, Pakistan" },
+      { name: "Affan Yasin", role: "Member", affiliation: "School of AI and Advanced Computing, Xianjiaotong-Liverpool University, China" },
+      { name: "Ala Al Fuuqaha", role: "Member", affiliation: "Khalifa University / Hamad Bin Khalifa University, Qatar" },
+      { name: "Ammar Elhassan", role: "Member", affiliation: "Princess Sumaya University for Technology, Amman, Jordan" },
+      { name: "Anwar Majid Mirza", role: "Member", affiliation: "Prince Mohammad Bin Fahd University, Al Khobar, KSA" },
+      { name: "Driss BenHaddou", role: "Member", affiliation: "Al Faisal University, KSA" },
+      { name: "Ghazanfar Latif", role: "Member", affiliation: "Thompson Rivers University, Kamloops, BC, Canada" },
+      { name: "Ilyes Jenhani", role: "Member", affiliation: "Doha University of Science and Technology, Qatar" },
+      { name: "Imran Usman", role: "Member", affiliation: "National University of Sciences and Technology, Pakistan" },
+      { name: "Jaafar Alghazo", role: "Member", affiliation: "University of Minnesota Crookston, SWVA Node CCI Fellow, United States" },
+      { name: "Khalid Mahmood", role: "Member", affiliation: "Graduate School of Intelligent Data Science, Douliu 64002, Taiwan" },
+      { name: "Kashif Amjad", role: "Member", affiliation: "Prince Mohammad Bin Fahd University, Al Khobar, KSA" },
+      { name: "Marius Nagy", role: "Member", affiliation: "Prince Mohammad Bin Fahd University, Al Khobar, KSA" },
+      { name: "Mohamed Anan", role: "Member", affiliation: "Al Faisal University, KSA" },
+      { name: "Mohamed Deriche", role: "Member", affiliation: "Ajman University, UAE" },
+      { name: "Mohsin Bilal", role: "Member", affiliation: "Prince Sattam bin Abdulaziz University, Alkharj, KSA" },
+      { name: "Muhammad Ibrar", role: "Member", affiliation: "Postdoctoral Fellow, School of Software, Dalian University of Technology, China" },
+      { name: "Muhammad Rashid Naeem", role: "Member", affiliation: "Assistant Professor, Department of Software Engineering, PSU, KSA" },
+      { name: "Muhammad Rizwan", role: "Member", affiliation: "Soongsil University, South Korea" },
+      { name: "Nawazish Naveed", role: "Member", affiliation: "College of Applied Sciences, Oman" },
+      { name: "Nayeem Ahmad Khan", role: "Member", affiliation: "Saudi Electronic University, Saudi Arabia" },
+      { name: "Qamar Abbas", role: "Member", affiliation: "International Islamic University, Islamabad, Pakistan" },
+      { name: "Saleem Mustafa", role: "Member", affiliation: "Superior University, Lahore, Pakistan" },
+      { name: "Shifq Ur Rehman", role: "Member", affiliation: "Imam Mohammad Ibn Saud Islamic University, Riyadh, KSA" },
+      { name: "Sherif Abdelhamid", role: "Member", affiliation: "Virginia Military Institute, SWVA Node CCI Fellow, United States" },
+      { name: "Umar Manzoor", role: "Member", affiliation: "University of Sunderland, United Kingdom" },
+      { name: "Wesal Ali", role: "Member", affiliation: "Prince Mohammad Bin Fahd University, Al Khobar, KSA" },
+      { name: "Zunaira Jaleel", role: "Member", affiliation: "Air University, Islamabad, Pakistan" },
+      { name: "Abdul Hafeez", role: "Member", affiliation: "Bahria University Lahore Campus (BULC), Pakistan" },
+      { name: "Abdul Hannan Khan", role: "Member", affiliation: "Green International University Lahore, Pakistan" },
+      { name: "Abdur Rehman", role: "Member", affiliation: "NCBA&E, Pakistan" },
+      { name: "Abirami A", role: "Member", affiliation: "Sona College of Technology, India" },
+      { name: "Adnan Qamar", role: "Member", affiliation: "University of Engineering and Technology Lahore, Pakistan" },
+      { name: "Aftab Ahmed Shaikh", role: "Member", affiliation: "SZABIST Karachi, Pakistan" },
+      { name: "Agha Ali Raza", role: "Member", affiliation: "Lahore University of Management Sciences (LUMS), Pakistan" },
+      { name: "Ahmad A. Mazhar", role: "Member", affiliation: "University of Sharjah, UAE" },
+      { name: "Ahmed Regragui", role: "Member", affiliation: "University Moulay Ismail, Morocco" },
+      { name: "Akshata Badade", role: "Member", affiliation: "Symbiosis International, India" },
+      { name: "Amal Yalid", role: "Member", affiliation: "Technologie d'enseignement et d'apprentissage, France" },
+      { name: "Amine Dehbi", role: "Member", affiliation: "University Hassan II, Morocco" },
+      { name: "Anagha Bhattacharya", role: "Member", affiliation: "NIT, Mizoram, India" },
+      { name: "Annapurna Pradhan", role: "Member", affiliation: "NIT, Rourkela, India" },
+      { name: "Aravindhan Kurunthachalam", role: "Member", affiliation: "REVA University, India" },
+      { name: "Areej Fatima", role: "Member", affiliation: "LGU, Lahore, Pakistan" },
+      { name: "Arindam Chakraborty", role: "Member", affiliation: "SRM Institute of Science and Technology, India" },
+      { name: "Asad Ullah", role: "Member", affiliation: "Air University, Islamabad, Pakistan" },
+      { name: "Asghar Ali Shah", role: "Member", affiliation: "Kateb University, Afghanistan" },
+      { name: "Asif Ahamed", role: "Member", affiliation: "University of Westcliff, USA" },
+      { name: "Asif Masood", role: "Member", affiliation: "Bahria University, Pakistan" },
+      { name: "Asif Umer", role: "Member", affiliation: "Hazara University, Pakistan" },
+      { name: "Ayesha Atta", role: "Member", affiliation: "GCU, Lahore, Pakistan" },
+      { name: "Badr El Khalyly", role: "Member", affiliation: "Hassan 2 University Casablanca, Morocco" },
+      { name: "Bhavnish Walia", role: "Member", affiliation: "Amazon, USA" },
+      { name: "Bilal Shoaib Khan", role: "Member", affiliation: "Green International University, Lahore, Pakistan" },
+      { name: "Bipin Nair", role: "Member", affiliation: "Amrita, India" },
+      { name: "Brindha K", role: "Member", affiliation: "VIT University, India" },
+      { name: "Chahrazad Zargane", role: "Member", affiliation: "Higher School of Technology, UAE" },
+      { name: "Deboleena Sadhukhan", role: "Member", affiliation: "SRM IST, India" },
+      { name: "Deepa Krishnan", role: "Member", affiliation: "Mukesh Patel School of Technology, India" },
+      { name: "Dhanalakshmi B K", role: "Member", affiliation: "BMSIT&M, India" },
+      { name: "Dhanveer Singh", role: "Member", affiliation: "Capital One Financial Services, USA" },
+      { name: "Dhayanithi Jaganathan", role: "Member", affiliation: "Sona College of Technology, India" },
+      { name: "Diksha Joshi", role: "Member", affiliation: "SVKM, India" },
+      { name: "Ehsan Rehman", role: "Member", affiliation: "PMU, Saudi Arabia" },
+      { name: "El Asry Chadia", role: "Member", affiliation: "Mohammed V University, Morocco" },
+      { name: "Elizabeth B Varghese", role: "Member", affiliation: "Hamad Bin Khalifa University, Qatar" },
+      { name: "Erssa Arif", role: "Member", affiliation: "Riphah International University, Pakistan" },
+      { name: "Fadia Ali Khan", role: "Member", affiliation: "HITEC University, Pakistan" },
+      { name: "Fahad Ahmed", role: "Member", affiliation: "NCBA&E, Pakistan" },
+      { name: "Faiqa Khaliq", role: "Member", affiliation: "University of Management and Technology, Pakistan" },
+      { name: "Faizan Zahid", role: "Member", affiliation: "University of Catania, Italy" },
+      { name: "Fauzia Chattha", role: "Member", affiliation: "Govt Graduate College of Science Lahore, Pakistan" },
+      { name: "Geno Peter", role: "Member", affiliation: "Lites, USA" },
+      { name: "Gordhan Das Valasai", role: "Member", affiliation: "Mehran University, Pakistan" },
+      { name: "Guermah Hatim", role: "Member", affiliation: "ENSIAS, Morocco" },
+      { name: "Hafida Assmi", role: "Member", affiliation: "Cadi Ayyad, Morocco" },
+      { name: "Hao Guo", role: "Member", affiliation: "Northwestern Polytechnical University, China" },
+      { name: "Hasanujjaman Milon", role: "Member", affiliation: "Westcliff University, USA" },
+      { name: "Hassan Rehan", role: "Member", affiliation: "Purdue University, USA" },
+      { name: "Hemanta Kumar Bhuyan", role: "Member", affiliation: "Mahavir Institute of Engineering, India" },
+      { name: "Humayun Irshad", role: "Member", affiliation: "The University of Faisalabad, Pakistan" },
+      { name: "Husnain Mansoor", role: "Member", affiliation: "SZABIST Karachi, Pakistan" },
+      { name: "Ibadullah Jan", role: "Member", affiliation: "The University of Agriculture Peshawar, Pakistan" },
+      { name: "Ibrahim Hamzane", role: "Member", affiliation: "Faculté des Sciences Ben M'Sik, Morocco" },
+      { name: "Iftikhar Ahmad", role: "Member", affiliation: "Cranfield University, United Kingdom" },
+      { name: "Iftikhar Naseer", role: "Member", affiliation: "Superior University, Lahore, Pakistan" },
+      { name: "Imran Khan", role: "Member", affiliation: "University of Sargodha, Pakistan" },
+      { name: "Irfan Ali", role: "Member", affiliation: "Beijing University of Chemical Technology, China" },
+      { name: "Irfan Haider", role: "Member", affiliation: "HITEC University Taxila, Pakistan" },
+      { name: "Irum Noreen", role: "Member", affiliation: "Bahria University Lahore Campus, Pakistan" },
+      { name: "Istiaq Ahmed", role: "Member", affiliation: "Southern New Hampshire University, USA" },
+      { name: "Jawad Ahmad", role: "Member", affiliation: "Prince Mohammad Bin Fahd University (PMU), Saudi Arabia" },
+      { name: "Jawad Alkhateeb", role: "Member", affiliation: "PMU, KSA" },
+      { name: "Junaid Ali Khan", role: "Member", affiliation: "HITEC University Taxila, Pakistan" },
+      { name: "Jyothish Lal G", role: "Member", affiliation: "Amrita Vishwa Vidyapeetham, India" },
+      { name: "K. Anish Pon Yamini", role: "Member", affiliation: "Vel Tech, India" },
+      { name: "Kaleem Razzaq Malik", role: "Member", affiliation: "Air University Multan, Pakistan" },
+      { name: "Kamal Zehraoui", role: "Member", affiliation: "Hassan II University, Morocco" },
+      { name: "Khaled Fawagreh", role: "Member", affiliation: "PMU, KSA" },
+      { name: "Khalid Masood", role: "Member", affiliation: "King Abdul Aziz University, KSA" },
+      { name: "Khalil Ur Rehman", role: "Member", affiliation: "Prince Sultan University, KSA" },
+      { name: "Khawaja Qasim Maqbool", role: "Member", affiliation: "Bahria University Lahore, Pakistan" },
+      { name: "Kiran Puttegowda", role: "Member", affiliation: "Vidyavardhaka College of Engineering, India" },
+      { name: "Leena Anum", role: "Member", affiliation: "NUST, Pakistan" },
+      { name: "Lubaid Ahmed", role: "Member", affiliation: "Usman Institute of Technology, Pakistan" },
+      { name: "Maen Hammad", role: "Member", affiliation: "The Hashemite University, Jordan" },
+      { name: "Mahesha P.", role: "Member", affiliation: "S J College of Engineering, India" },
+      { name: "Mahfouz Rostamzadeh", role: "Member", affiliation: "Soran University, Iraq" },
+      { name: "Mahwish Bano", role: "Member", affiliation: "Air University, Pakistan" },
+      { name: "Malik Tahir Hassan", role: "Member", affiliation: "University of Management & Technology, Pakistan" },
+      { name: "Manoj Diwakar", role: "Member", affiliation: "Graphic Era University, India" },
+      { name: "Manoj Kumar M V", role: "Member", affiliation: "NIT Karnataka, India" },
+      { name: "Mariam Ahmed Mujtaba", role: "Member", affiliation: "Women University Mardan, Pakistan" },
+      { name: "Mazna Toosy", role: "Member", affiliation: "Kinnaird College for Women, Pakistan" },
+      { name: "Mohamed Ait Abderrahmane", role: "Member", affiliation: "Ibn Zohr University, Morocco" },
+      { name: "Mohamed Khenchouch", role: "Member", affiliation: "Moulay Ismail University, Morocco" },
+      { name: "Mohamed Ouhssini", role: "Member", affiliation: "University Ibn Zohr, Morocco" },
+      { name: "Mohammed Wasim Bhatt", role: "Member", affiliation: "MIET, India" },
+      { name: "Mostafizur Rahman", role: "Member", affiliation: "Westcliff University, USA" },
+      { name: "Mourad Haddioui", role: "Member", affiliation: "FST Errachidia, Morocco" },
+      { name: "Shaista Tarannum", role: "Member", affiliation: "M. S. Ramaiah University, India" },
+      { name: "Mubashar Iqbal", role: "Member", affiliation: "University of Tartu, Estonia" },
+      { name: "Muhamed Mudawar", role: "Member", affiliation: "PMU, KSA" },
+      { name: "Muhammad Abdul Rehman", role: "Member", affiliation: "Riphah Islamabad, Pakistan" },
+      { name: "Muhammad Abubakar", role: "Member", affiliation: "Lahore Garrison University, Pakistan" },
+      { name: "Muhammad Adnan Khan", role: "Member", affiliation: "Gachon University, South Korea" },
+      { name: "Muhammad Afzal", role: "Member", affiliation: "Qarshi University, Pakistan" },
+      { name: "Muhammad Ahsan Raza", role: "Member", affiliation: "University of Information Sciences, Pakistan" },
+      { name: "Muhammad Asghar Saqib", role: "Member", affiliation: "University of Management & Technology, Pakistan" },
+      { name: "Muhammad Asif", role: "Member", affiliation: "University of Education, Pakistan" },
+      { name: "Muhammad Azhar", role: "Member", affiliation: "The University of Faisalabad, Pakistan" },
+      { name: "Muhammad Farrukh Khan", role: "Member", affiliation: "NASTP Institute, Pakistan" },
+      { name: "Muhammad Hanif", role: "Member", affiliation: "Riphah International University, Pakistan" },
+      { name: "Muhammad Hasanain Chaudary", role: "Member", affiliation: "COMSATS University Islamabad, Pakistan" },
+      { name: "Muhammad Hassan Ghulam Muhammad", role: "Member", affiliation: "Pak-AIMS, Pakistan" },
+      { name: "Muhammad Imran", role: "Member", affiliation: "Prince Sattam Bin Abdulaziz University, KSA" },
+      { name: "Muhammad Nadeem Chohan", role: "Member", affiliation: "Prince Sattam Bin Abdulaziz University, KSA" },
+      { name: "Muhammad Rafi", role: "Member", affiliation: "FAST Karachi, Pakistan" },
+      { name: "Muhammad Rizwan (KFUEIT)", role: "Member", affiliation: "KFUEIT, Pakistan" },
+      { name: "Muhammad Rovidad", role: "Member", affiliation: "Forman Christian College University, Pakistan" },
+      { name: "Muhammad Saeed Khan", role: "Member", affiliation: "University of Sargodha, Pakistan" },
+      { name: "Muhammad Salman", role: "Member", affiliation: "Abasyn University, Pakistan" },
+      { name: "Muhammad Tahir Naseem", role: "Member", affiliation: "Yeungnam University, South Korea" },
+      { name: "Muhammad Waqas (Pak-AIMS)", role: "Member", affiliation: "Pak-American Institute, Pakistan" },
+      { name: "Muhammad Wasim", role: "Member", affiliation: "Institute of Space Technology, Pakistan" },
+      { name: "Muhammad Yasir", role: "Member", affiliation: "Shandong University, China" },
+      { name: "Muhammad Ibrahim", role: "Member", affiliation: "Islamia University, Pakistan" },
+      { name: "Munir Ahmad", role: "Member", affiliation: "Korea University, South Korea" },
+      { name: "N Thillaiarasu", role: "Member", affiliation: "Reva University, India" },
+      { name: "Nadia Farooq", role: "Member", affiliation: "Higher Education Department KP, Pakistan" },
+      { name: "Nadia Tabassum", role: "Member", affiliation: "Virtual University of Pakistan, Pakistan" },
+      { name: "Naila Naz", role: "Member", affiliation: "NCBA&E, Pakistan" },
+      { name: "Nasir Abbas Tanoli", role: "Member", affiliation: "Livestock and Agriculture KPK, Pakistan" },
+      { name: "Nasir Mahmood", role: "Member", affiliation: "University of Engineering and Technology, Pakistan" },
+      { name: "Natash Ali Mian", role: "Member", affiliation: "Beaconhouse National University, Pakistan" },
+      { name: "Nazia Rehman", role: "Member", affiliation: "COMSATS University Islamabad, Pakistan" },
+      { name: "Neha Singhal", role: "Member", affiliation: "Christ University, India" },
+      { name: "Nida Anwar", role: "Member", affiliation: "Virtual University of Pakistan, Pakistan" },
+      { name: "Nithyakalyani Krishnan", role: "Member", affiliation: "SRM Institute of Science and Technology, India" },
+      { name: "Noman", role: "Member", affiliation: "University of Karachi, Pakistan" },
+      { name: "P.Logeswari", role: "Member", affiliation: "Jain University, India" },
+      { name: "Palanichamy Naveen", role: "Member", affiliation: "Sri Eshwar College of Engineering, India" },
+      { name: "Poornima B V", role: "Member", affiliation: "JSS Science and Technology University, India" },
+      { name: "Prasanna Venkatesh", role: "Member", affiliation: "SRM Institute of Science and Technology, India" },
+      { name: "Praveena K S", role: "Member", affiliation: "Vidyavardhaka College of Engineering, India" },
+      { name: "Pushpalika Chatterjee", role: "Member", affiliation: "The Huntington National Bank, USA" },
+      { name: "Qurratulain Rehan", role: "Member", affiliation: "Kinnaird College for Women, Pakistan" },
+      { name: "Rabia Saleem", role: "Member", affiliation: "COMSATS University Islamabad, Pakistan" },
+      { name: "Rahmat Ullah", role: "Member", affiliation: "University of Essex, United Kingdom" },
+      { name: "Rahul Autade", role: "Member", affiliation: "3Itek LLC, USA" },
+      { name: "Ramakrishna Ramadugu", role: "Member", affiliation: "Finastra Corporation, India" },
+      { name: "Ravi Chandra Thota", role: "Member", affiliation: "University of Missouri-Kansas City, USA" },
+      { name: "Rohit Gupta", role: "Member", affiliation: "SRMIST, India" },
+      { name: "Ruhul Amin Hazarika", role: "Member", affiliation: "University of Calabria, Italy" },
+      { name: "Saadullah Farooq Abbasi", role: "Member", affiliation: "University of Birmingham, United Kingdom" },
+      { name: "Saba Sajjad", role: "Member", affiliation: "IISAT, Pakistan" },
+      { name: "Saddaf Rubab", role: "Member", affiliation: "University of Sharjah, UAE" },
+      { name: "Saddam Hussain", role: "Member", affiliation: "Universiti Brunei Darussalam, Brunei" },
+      { name: "Sadia Saleem", role: "Member", affiliation: "International Islamic University, Pakistan" },
+      { name: "Safina Kanwal", role: "Member", affiliation: "UMT, Pakistan" },
+      { name: "Saghir Abbas (FAST)", role: "Member", affiliation: "FAST Islamabad, Pakistan" },
+      { name: "Sahar Latif Rana", role: "Member", affiliation: "University of Education, Pakistan" },
+      { name: "Said Benkirane", role: "Member", affiliation: "Cadi Ayyad University, Morocco" },
+      { name: "Saima Shaheen", role: "Member", affiliation: "HITEC University Taxila, Pakistan" },
+      { name: "Saira Habib", role: "Member", affiliation: "COMSATS University Islamabad, Pakistan" },
+      { name: "Saleem Ullah", role: "Member", affiliation: "KFUEIT, Pakistan" },
+      { name: "Salman Muneer", role: "Member", affiliation: "University of Central Punjab, Pakistan" },
+      { name: "Salman Qadri", role: "Member", affiliation: "MNSUAM, Pakistan" },
+      { name: "Sameera Fathima M", role: "Member", affiliation: "SRM Institute of Science and Technology, India" },
+      { name: "Samia Ijaz", role: "Member", affiliation: "HITEC University Taxila, Pakistan" },
+      { name: "Senthilkumar Murugesan", role: "Member", affiliation: "Anna University, India" },
+      { name: "Shabib Aftab", role: "Member", affiliation: "Virtual University of Pakistan, Pakistan" },
+      { name: "Shafiq Hussain", role: "Member", affiliation: "University of Sahiwal, Pakistan" },
+      { name: "Shahabuddin Muhammad", role: "Member", affiliation: "PMU, KSA" },
+      { name: "Shahan Yamin Siddiqui", role: "Member", affiliation: "NASTP Institute, Pakistan" },
+      { name: "Shaheen Irfan", role: "Member", affiliation: "The University of Lahore, Pakistan" },
+      { name: "Shahid Naseem", role: "Member", affiliation: "University of Education, Pakistan" },
+      { name: "Shahzad Akbar", role: "Member", affiliation: "Riphah Islamabad, Pakistan" },
+      { name: "Shanmugha Priya R K", role: "Member", affiliation: "Jai Shriram Engineering College, India" },
+      { name: "Shashidhar R", role: "Member", affiliation: "JSS Science and Technology University, India" },
+      { name: "Shazia Saqib", role: "Member", affiliation: "Institute for Art and Culture, Pakistan" },
+      { name: "Sheheryar Malik", role: "Member", affiliation: "Riphah Islamabad, Pakistan" },
+      { name: "Shreyanka Subbarayappa", role: "Member", affiliation: "M. S. Ramaiah University, India" },
+      { name: "Sowmya V", role: "Member", affiliation: "Amrita University, India" },
+      { name: "Sribhuvaneshwari H", role: "Member", affiliation: "SRM Institute of Science and Technology, India" },
+      { name: "Srinivasa Atta", role: "Member", affiliation: "Google, USA" },
+      { name: "Sumeer Basha Peta", role: "Member", affiliation: "Southern Illinois University Edwardsville, USA" },
+      { name: "Sundus Munir", role: "Member", affiliation: "Lahore Garrison University, Pakistan" },
+      { name: "Syed Ali Raza", role: "Member", affiliation: "GC University Lahore, Pakistan" },
+      { name: "Syed Saqib Raza Rizvi", role: "Member", affiliation: "Capital University of Science and Technology, Pakistan" },
+      { name: "Syed Wasif Azim", role: "Member", affiliation: "Forman Christian College, Pakistan" },
+      { name: "Syeda Uroos Qazi", role: "Member", affiliation: "Ziauddin University, Pakistan" },
+      { name: "Taha Houda", role: "Member", affiliation: "PMU, KSA" },
+      { name: "Tahir Abbas Khan", role: "Member", affiliation: "Bahauddin Zakariya University, Pakistan" },
+      { name: "Tahir Alyas", role: "Member", affiliation: "Lahore Garrison University, Pakistan" },
+      { name: "Tahir Mehmood", role: "Member", affiliation: "UNIBS, Italy" },
+      { name: "Taimoor Salahuddin", role: "Member", affiliation: "MUST, Pakistan" },
+      { name: "Tariq Aziz", role: "Member", affiliation: "PMU, Saudi Arabia" },
+      { name: "Tegil J John", role: "Member", affiliation: "Christ University, India" },
+      { name: "Touria Karite", role: "Member", affiliation: "ENSAF University, Morocco" },
+      { name: "Trisiladevi C. Nagavi", role: "Member", affiliation: "SJCE, India" },
+      { name: "Uman Ahmed Mohammed", role: "Member", affiliation: "SMIEEE, USA" },
+      { name: "Umar Farooq Shafi", role: "Member", affiliation: "The Islamia University of Bahawalpur, Pakistan" },
+      { name: "Umer Farooq", role: "Member", affiliation: "Hamdard University, Pakistan" },
+      { name: "Usama Khalid", role: "Member", affiliation: "Hanyang University, South Korea" },
+      { name: "Uzma Shaukat", role: "Member", affiliation: "Govt Graduate College for Women Lahore, Pakistan" },
+      { name: "Vasudha Vedula", role: "Member", affiliation: "University of Texas at San Antonio, USA" },
+      { name: "Veena Dillshad", role: "Member", affiliation: "HITEC University, Pakistan" },
+      { name: "Vinayakumar Ravi", role: "Member", affiliation: "PMU, KSA" },
+      { name: "Vinodhini V", role: "Member", affiliation: "Sona College of Technology, India" },
+      { name: "Waqas Ahmed", role: "Member", affiliation: "HITEC University, Pakistan" },
+      { name: "Wasim Ahmad Khan", role: "Member", affiliation: "Institute for Art & Culture, Pakistan" },
+      { name: "Xiaoding Wang", role: "Member", affiliation: "Fujian Normal University, China" },
+      { name: "Youness Abouqora", role: "Member", affiliation: "Université Hassan 1, Morocco" },
+      { name: "Yousaf Saeed", role: "Member", affiliation: "University of Haripur, Pakistan" },
+      { name: "Zafar Iqbal Roy", role: "Member", affiliation: "COMSATS University Islamabad, Pakistan" },
+      { name: "Zaher Ibrahim Salah", role: "Member", affiliation: "PMU, KSA" },
+      { name: "Zeeshan Habib", role: "Member", affiliation: "HITEC University, Pakistan" }
+    ]
+  }
+];
+
+const getInitials = (name) => {
+  const parts = name.replace(/^(Dr\.|Mr\.|Ms\.|Prof\.|Eng\.)\s*/i, '').split(' ');
+  return parts.slice(0, 2).map(p => p[0]).join('').toUpperCase();
+};
+
+const MemberCard = ({ member, color }) => (
+  <motion.div
+    whileHover={{ y: -6, borderColor: `${color}55` }}
+    transition={{ duration: 0.25 }}
+    style={{
+      background: 'rgba(15, 23, 42, 0.95)',
+      border: '1px solid rgba(255,255,255,0.05)',
+      borderRadius: '12px',
+      padding: '1.5rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      textAlign: 'center',
+      gap: '0.6rem',
+      transition: 'transform 0.2s, border-color 0.2s',
+      willChange: 'transform'
+    }}
+  >
+    {/* Avatar */}
+    <div style={{
+      width: '80px', height: '80px', borderRadius: '50%',
+      background: `linear-gradient(135deg, ${color}cc, ${color}44)`,
+      border: `3px solid ${color}66`,
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      fontSize: '1.6rem', fontWeight: '800', color: '#fff',
+      boxShadow: `0 4px 20px ${color}33`, flexShrink: 0
+    }}>
+      {member.image ? <img src={member.image} alt={member.name} style={{width:'100%', height:'100%', objectFit:'cover', borderRadius:'50%'}} /> : getInitials(member.name)}
+    </div>
+
+    <div>
+      <h4 style={{ color: '#f1f5f9', fontSize: '1rem', fontWeight: '700', marginBottom: '0.25rem', lineHeight: '1.3' }}>
+        {member.name}
+      </h4>
+      <p style={{ color: color, fontSize: '0.8rem', fontWeight: '600', marginBottom: '0.2rem' }}>
+        {member.role}
+      </p>
+      <p style={{ color: 'var(--text-secondary)', fontSize: '0.8rem' }}>
+        {member.affiliation}
+      </p>
+    </div>
+
+    {member.photoUrl && (
+      <a
+        href={member.photoUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          display: 'flex', alignItems: 'center', gap: '0.4rem',
+          color: color, fontSize: '0.78rem', fontWeight: '600',
+          padding: '0.35rem 0.9rem', borderRadius: '20px',
+          border: `1px solid ${color}44`, transition: 'all 0.2s',
+          marginTop: '0.25rem'
+        }}
+        onMouseEnter={e => { e.currentTarget.style.background = `${color}22`; }}
+        onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
+      >
+        <ExternalLink size={13} /> View Profile
+      </a>
+    )}
+  </motion.div>
+);
+
+const CommitteeSection = ({ committee, index }) => {
+  const [open, setOpen] = useState(index < 3);
+  const [showAll, setShowAll] = useState(false);
+  
+  const INITIAL_COUNT = 20;
+  const hasMore = committee.members.length > INITIAL_COUNT;
+  const displayedMembers = showAll ? committee.members : committee.members.slice(0, INITIAL_COUNT);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-30px' }}
+      transition={{ duration: 0.6, delay: index * 0.05 }}
+      style={{
+        background: 'rgba(30,41,59,0.35)',
+        border: `1px solid ${committee.color}33`,
+        borderLeft: `5px solid ${committee.color}`,
+        borderRadius: '18px',
+        overflow: 'hidden',
+        marginBottom: '2rem'
+      }}
+    >
+      {/* Header */}
+      <button
+        onClick={() => setOpen(v => !v)}
+        style={{
+          width: '100%', background: 'none', border: 'none', cursor: 'pointer',
+          padding: '1.75rem 2rem',
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          gap: '1rem'
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div style={{
+            width: '40px', height: '40px', borderRadius: '50%',
+            background: `linear-gradient(135deg, ${committee.color}, ${committee.color}88)`,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            color: '#fff', fontWeight: '900', fontSize: '0.95rem', flexShrink: 0
+          }}>
+            {index + 1}
+          </div>
+          <h3 style={{ color: '#f1f5f9', fontSize: '1.3rem', fontWeight: '700', textAlign: 'left' }}>
+            {committee.title}
+            <span style={{ color: committee.color, marginLeft: '0.75rem', fontSize: '0.9rem', fontWeight: '500' }}>
+              ({committee.members.length} {committee.members.length === 1 ? 'member' : 'members'})
+            </span>
+          </h3>
+        </div>
+        <div style={{ color: committee.color, flexShrink: 0 }}>
+          {open ? <ChevronUp size={22} /> : <ChevronDown size={22} />}
+        </div>
+      </button>
+
+      {/* Members Grid */}
+      <div style={{ display: open ? 'block' : 'none', overflow: 'hidden' }}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+          gap: '1rem',
+          padding: '0 2rem 2rem'
+        }}>
+          {displayedMembers.map((member, i) => (
+            <MemberCard key={i} member={member} color={committee.color} />
+          ))}
+        </div>
+
+        {hasMore && !showAll && (
+          <div style={{ padding: '1rem 2rem 2rem', textAlign: 'center' }}>
+            <button
+              onClick={() => setShowAll(true)}
+              className="load-more-btn"
+              style={{
+                padding: '0.8rem 2.5rem',
+                borderRadius: '50px',
+                background: `${committee.color}22`,
+                border: `1px solid ${committee.color}44`,
+                color: committee.color,
+                fontWeight: '700',
+                cursor: 'pointer',
+                transition: 'all 0.3s'
+              }}
+            >
+              Show All {committee.members.length} Members
+            </button>
+          </div>
+        )}
+      </div>
+    </motion.div>
+  );
+};
+
+const Committee = () => {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      style={{ paddingTop: '100px', paddingBottom: '80px' }}
+    >
+      {/* Hero */}
+      <section style={{ padding: '4rem 0 3rem', background: 'linear-gradient(180deg,#0f172a,#020617)', textAlign: 'center' }}>
+        <div className="container">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            style={{ fontSize: 'clamp(2.5rem,5vw,4rem)', marginBottom: '1rem' }}
+          >
+            Conference{' '}
+            <span style={{ background: 'linear-gradient(135deg,#38bdf8,#818cf8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+              Committees
+            </span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', maxWidth: '650px', margin: '0 auto' }}
+          >
+            Meet the dedicated team of experts and professionals organizing AISTEMEDU 2026. Click any section to expand and see all members.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Committees */}
+      <section style={{ padding: '4rem 0' }}>
+        <div className="container">
+          {committees.map((committee, index) => (
+            <CommitteeSection key={index} committee={committee} index={index} />
+          ))}
+        </div>
+      </section>
+    </motion.div>
+  );
+};
+
+export default Committee;
