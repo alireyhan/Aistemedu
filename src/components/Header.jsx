@@ -72,15 +72,15 @@ const Header = () => {
           </Link>
           <div className="nav-links mobile-hidden">
             <Link to="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>HOME</Link>
-            <Link to="/call-for-papers" className={`nav-link ${isActive('/call-for-papers') ? 'active' : ''}`}>CALL FOR PAPERS</Link>
+            <Link to="/call-for-papers" className={`nav-link ${isActive('/call-for-papers') ? 'active' : ''}`}>CALL FOR PAPER</Link>
             <Link to="/scope" className={`nav-link ${isActive('/scope') ? 'active' : ''}`}>SCOPE</Link>
             <Link to="/special-sessions" className={`nav-link ${isActive('/special-sessions') ? 'active' : ''}`}>SPECIAL SESSIONS</Link>
             <Link to="/khobar-city" className={`nav-link ${isActive('/khobar-city') ? 'active' : ''}`}>KHOBAR CITY</Link>
             <Link to="/accommodation" className={`nav-link ${isActive('/accommodation') ? 'active' : ''}`}>ACCOMMODATION</Link>
             <Link to="/contact" className={`nav-link ${isActive('/contact') ? 'active' : ''}`}>CONTACT</Link>
           </div>
-          <button 
-            className="hamburger-placeholder" 
+          <button
+            className="hamburger-placeholder"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             style={{ background: 'none', border: 'none', padding: '5px' }}
           >

@@ -299,15 +299,15 @@ const Home = () => {
               <h2 style={{ fontSize: '2.2rem', marginBottom: '1rem', color: 'white' }}>Ready to <span style={{ color: 'var(--primary-color)'}}>Submit?</span></h2>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', marginBottom: '2.5rem', maxWidth: '300px' }}>Join leading researchers and submit your original work through EasyChair.</p>
               <a href="https://easychair.org/account/signin?l=8568301878240743666.1775567869.25b8e943" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ padding: '1rem 3rem', marginBottom: '2.5rem' }}>
-                Submit via EasyChair
+                Submit
               </a>
               
               <div style={{ height: '1px', background: 'rgba(255,255,255,0.1)', width: '100%', margin: '1rem 0' }}></div>
               
               <div style={{ marginTop: '1.5rem' }}>
-                <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', color: 'white', fontWeight: '700' }}>Conference Program Released!</h3>
+                <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', color: 'white', fontWeight: '700' }}>Call for Paper!</h3>
                 <a href={conferencePDF} target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ padding: '0.8rem 2rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <Calendar size={18} /> Download Program (PDF)
+                  <Calendar size={18} /> Download Call for Paper (PDF)
                 </a>
               </div>
             </div>

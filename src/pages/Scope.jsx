@@ -208,7 +208,7 @@ const Scope = () => {
       <section style={{ padding: '5rem 0', background: 'transparent', textAlign: 'center' }}>
         <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <motion.div variants={sectionVariants} initial="hidden" animate="visible">
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem', color: 'white', fontWeight: '800' }}>
+            <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', marginBottom: '1.5rem', color: 'white', fontWeight: '800' }}>
               Scope of the{' '}
               <span style={{ color: 'var(--primary-color)' }}>
                 Conference
@@ -268,9 +268,7 @@ const Scope = () => {
               Conference <span style={{ color: 'var(--primary-color)' }}>Tracks</span>
             </h2>
             <div style={{ width: '60px', height: '4px', background: 'var(--primary-color)', margin: '1rem auto' }}></div>
-            <p style={{ color: 'var(--text-secondary)', marginTop: '1rem', fontSize: '1.1rem' }}>
-              6 specialized tracks — click <strong style={{ color: 'white' }}>View More</strong> on any track to see all sub-topics.
-            </p>
+
           </motion.div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>

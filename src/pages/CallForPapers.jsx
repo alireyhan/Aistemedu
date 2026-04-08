@@ -15,18 +15,18 @@ const CallForPapers = () => {
       >
         <div style={{ background: 'var(--glass-bg)', borderRadius: '24px', boxShadow: '0 10px 40px rgba(0,0,0,0.3)', border: '1px solid var(--glass-border)', backdropFilter: 'blur(12px)', textAlign: 'center', marginBottom: '4rem', padding: '4rem 2rem' }}>
           <h1 style={{ fontSize: '2.5rem', color: 'white', fontWeight: '800', marginBottom: '1rem' }}>
-            Conference <span style={{ color: 'var(--primary-color)'}}>Program Released!</span>
+            Call for <span style={{ color: 'var(--primary-color)'}}>Paper!</span>
           </h1>
           <div style={{ width: '60px', height: '4px', background: 'var(--primary-color)', margin: '0 auto 1.5rem' }}></div>
           <p style={{ maxWidth: '900px', margin: '0 auto 1.5rem', color: 'rgba(255,255,255,0.8)', fontSize: '1.1rem', lineHeight: '1.6' }}>
-            We are pleased to announce that the complete program for the IEEE International Conference on AI-Driven STEM Education and Learning Technologies
-            <strong style={{ color: 'white' }}> AISTEMEDU 2026</strong> is now available. Explore an exciting lineup of keynote addresses,
-            expert panel discussions, technical sessions, and special events scheduled across the two-day conference.
+            We are pleased to announce the Call for Paper for the IEEE International Conference on AI-Driven STEM Education and Learning Technologies
+            <strong style={{ color: 'white' }}> AISTEMEDU 2026</strong>. We invite authors to submit their original research, findings, and 
+            innovations covering topics across our diverse tracks to contribute to the global academic community.
           </p>
           
           <div style={{ marginTop: '2.5rem' }}>
              <a href={conferencePDF} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ padding: '1.25rem 2.5rem', fontSize: '1.1rem' }}>
-                Download Conference Program
+                Download Call for Paper
              </a>
           </div>
         </div>
