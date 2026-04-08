@@ -94,7 +94,7 @@ const Header = () => {
         <div className="mobile-drawer-content">
           <div className="mobile-drawer-links">
             <Link to="/" className={`mobile-nav-link ${isActive('/') ? 'active' : ''}`}>HOME</Link>
-            <Link to="/call-for-papers" className={`mobile-nav-link ${isActive('/call-for-papers') ? 'active' : ''}`}>CALL FOR PAPERS</Link>
+            <Link to="/call-for-papers" className={`mobile-nav-link ${isActive('/call-for-papers') ? 'active' : ''}`}>CALL FOR PAPER</Link>
             <Link to="/scope" className={`mobile-nav-link ${isActive('/scope') ? 'active' : ''}`}>SCOPE</Link>
             <Link to="/special-sessions" className={`mobile-nav-link ${isActive('/special-sessions') ? 'active' : ''}`}>SPECIAL SESSIONS</Link>
             <Link to="/khobar-city" className={`mobile-nav-link ${isActive('/khobar-city') ? 'active' : ''}`}>KHOBAR CITY</Link>

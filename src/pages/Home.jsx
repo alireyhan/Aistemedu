@@ -6,14 +6,14 @@ import {
   Scale
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import conferencePDF from '../assets/Final - AISTEMEDU2025 Conference Program Day 1 & 2.pdf';
+import conferencePDF from '../assets/Call_For_Paper_AISTEMEDU 2026.pdf';
 import khobarCity from '../assets/images/khobar_city.png';
 import landmarksSet from '../assets/khobar_landmarks_set_png_1775599490029.png';
 import split1 from '../assets/split_1.jfif';
 import split2 from '../assets/split_2.jfif';
 import split3 from '../assets/split_3.jpg';
 import { committeesSnapshot } from '../data/committees';
-import pmuLogo from '../assets/footer-logos/blank-img-removebg-preview.png';
+import pmuLogo from '../assets/pmulogo.png';
 import ieeeAdvancingLogo from '../assets/footer-logos/IEEE-Advancing-Technology-for-Humanity-logo-removebg-preview.png';
 import ieeeSaudiLogo from '../assets/footer-logos/images-removebg-preview.png';
 import cshsLogo from '../assets/cshs-logo.png';
@@ -207,10 +207,10 @@ const Home = () => {
       </section>
 
       {/* 4. CALL FOR PAPERS SECTION */}
-      <section className="section" style={{ background: 'transparent' }}>
+      <section className="section" style={{ background: 'transparent', paddingTop: '1rem' }}>
         <div className="container">
           <motion.div variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <h2 style={{ fontSize: '3rem', color: 'white' }}>Call for <span style={{ color: 'var(--primary-color)' }}>Papers</span></h2>
+            <h2 style={{ fontSize: '3rem', color: 'white' }}>Call for <span style={{ color: 'var(--primary-color)' }}>Paper</span></h2>
             <div style={{ width: '60px', height: '4px', background: 'var(--primary-color)', margin: '1rem auto' }}></div>
             <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', marginTop: '1rem', maxWidth: '800px', margin: '1rem auto' }}>
               Contribute to the advancement of AI-Driven STEM Education and Sustainability. We invite high-quality research papers for presentation and publication.
@@ -345,9 +345,9 @@ const Home = () => {
                 <div style={{ marginBottom: '8rem', position: 'relative' }}>
                   <div style={{ 
                     display: 'flex',
-                    flexWrap: 'wrap',
-                    justifyContent: 'center',
-                    gap: '2.5rem',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '3rem',
                     padding: '0 1rem'
                   }}>
                     {mainChairs.map((committee, cIdx) => (
@@ -357,21 +357,25 @@ const Home = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ duration: 0.7, delay: cIdx * 0.2, type: 'spring', stiffness: 80 }}
-                        style={{ flex: '1 1 0', minWidth: '300px', display: 'flex', flexDirection: 'column' }}
+                        style={{ width: '100%', maxWidth: '800px', display: 'flex', flexDirection: 'column' }}
                       >
                         {/* Animated Header for this chair */}
-                        <div
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.8 }}
                           style={{ 
-                            textAlign: 'center', 
-                            marginBottom: '3rem',
-                            padding: '0 1rem'
+                            textAlign: 'left', 
+                            marginBottom: '1.5rem',
+                            padding: '0'
                           }}
                         >
                           <h3 style={{ 
                             color: 'white', 
                             fontSize: 'clamp(1.2rem, 2vw, 1.8rem)', 
                             fontWeight: '800', 
-                            marginBottom: '0.8rem',
+                            marginBottom: '0.5rem',
                             letterSpacing: '-1px'
                           }}>
                             {committee.title.split(' ').map((word, i) => (
@@ -379,36 +383,43 @@ const Home = () => {
                             ))}
                           </h3>
                           <div style={{ 
-                            width: '100px', 
-                            height: '5px', 
+                            width: '80px', 
+                            height: '4px', 
                             background: `linear-gradient(90deg, ${committee.color}, transparent)`, 
-                            margin: '0 auto',
                             borderRadius: '10px'
                           }}></div>
-                        </div>
+                        </motion.div>
 
                         {/* Animated Card for member */}
                         {committee.members.map((member, mIdx) => (
                           <motion.div 
                             key={`chair-member-${cIdx}-${mIdx}`} 
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ 
+                              duration: 0.8, 
+                              type: 'spring',
+                              stiffness: 100 
+                            }}
                             style={{ 
-                              flex: '1',
+                              width: '100%',
                               background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))', 
                               border: '1px solid rgba(255,255,255,0.1)', 
                               borderRadius: '30px', 
-                              padding: '2rem 1.5rem',
+                              padding: '2rem',
                               backdropFilter: 'blur(30px)',
                               display: 'flex',
-                              flexDirection: 'column',
+                              flexDirection: 'row',
                               alignItems: 'center',
-                              textAlign: 'center',
+                              gap: '3rem',
+                              textAlign: 'left',
                               position: 'relative',
                               overflow: 'hidden',
                               boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
                             }}
                             whileHover={{ 
-                              y: -15, 
-                              scale: 1.02,
+                              x: 20, 
                               borderColor: committee.color,
                               boxShadow: `0 0 40px ${committee.color}22` 
                             }}
@@ -416,43 +427,43 @@ const Home = () => {
                             <div style={{ 
                               position: 'absolute', 
                               top: '-10px', 
-                              right: '-10px', 
-                              width: '60px', 
-                              height: '60px', 
+                              left: '-10px', 
+                              width: '100px', 
+                              height: '100px', 
                               background: committee.color, 
                               opacity: 0.1, 
                               borderRadius: '50%',
-                              filter: 'blur(20px)'
+                              filter: 'blur(30px)'
                             }}></div>
 
                             <div style={{ 
-                              width: '100%', 
-                              maxWidth: '240px', 
-                              aspectRatio: '1/1', 
+                              width: '280px', 
+                              height: '280px', 
                               borderRadius: '24px', 
                               background: 'rgba(255,255,255,0.03)', 
-                              marginBottom: '2rem', 
                               display: 'flex', 
                               alignItems: 'center', 
                               justifyContent: 'center',
                               border: `1px solid rgba(255,255,255,0.1)`,
                               overflow: 'hidden',
-                              transform: 'rotate(-3deg)',
+                              flexShrink: 0,
                               boxShadow: '0 15px 30px rgba(0,0,0,0.3)'
                             }}>
                               {member.image ? (
-                                <img src={member.image} alt={member.name} style={{ width: '100%', height: '100%', objectFit: 'cover', transform: 'rotate(3deg)' }} />
+                                <img src={member.image} alt={member.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                               ) : (
-                                <span style={{ fontSize: '2.5rem', fontWeight: '900', color: committee.color, transform: 'rotate(3deg)' }}>
+                                <span style={{ fontSize: '2.5rem', fontWeight: '900', color: committee.color }}>
                                   {member.name.split(' ').filter(n => !n.includes('.')).slice(0, 2).map(n => n[0]).join('')}
                                 </span>
                               )}
                             </div>
                             
-                            <h4 style={{ color: 'white', fontSize: '1.25rem', fontWeight: '800', marginBottom: '0.4rem', lineHeight: '1.2' }}>{member.name}</h4>
-                            <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', fontWeight: '700', marginBottom: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px' }}>{member.role}</p>
-                            <div style={{ height: '1px', width: '40%', background: 'rgba(255,255,255,0.1)', marginBottom: '0.8rem' }}></div>
-                            <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: '1.4', fontWeight: '500' }}>{member.affiliation}</p>
+                            <div style={{ flex: 1 }}>
+                              <h4 style={{ color: 'white', fontSize: '1.8rem', fontWeight: '800', marginBottom: '0.6rem', lineHeight: '1.2' }}>{member.name}</h4>
+                              <p style={{ color: committee.color, fontSize: '1.1rem', fontWeight: '800', marginBottom: '1.2rem', textTransform: 'uppercase', letterSpacing: '2px' }}>{member.role}</p>
+                              <div style={{ height: '1.5px', width: '80px', background: committee.color, opacity: 0.4, marginBottom: '1.2rem' }}></div>
+                              <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', lineHeight: '1.6', fontWeight: '500' }}>{member.affiliation}</p>
+                            </div>
                           </motion.div>
                         ))}
                       </motion.div>
@@ -549,8 +560,8 @@ const Home = () => {
                           }}></div>
 
                           <div style={{ 
-                            width: '120px', 
-                            height: '120px', 
+                            width: '200px', 
+                            height: '200px', 
                             borderRadius: '24px', 
                             background: 'rgba(255,255,255,0.03)', 
                             marginBottom: '2rem', 

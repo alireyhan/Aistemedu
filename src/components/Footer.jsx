@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Mail, MapPin, Phone, Globe, Share2, Link2 } from 'lucide-react';
-import pmuLogo from '../assets/footer-logos/blank-img-removebg-preview.png';
+import pmuLogo from '../assets/pmulogo.png';
 import ieeeAdvancingLogo from '../assets/footer-logos/IEEE-Advancing-Technology-for-Humanity-logo-removebg-preview.png';
 import ieeeSaudiLogo from '../assets/footer-logos/images-removebg-preview.png';
 import cshsLogo from '../assets/cshs-logo.png';
@@ -30,7 +30,7 @@ const Footer = () => {
             <h4>Quick Links</h4>
             <ul style={{ listStyle: 'none' }}>
               <li><Link to="/">Home</Link></li>
-              <li><Link to="/call-for-papers">Call for Papers</Link></li>
+              <li><Link to="/call-for-papers">Call for Paper</Link></li>
               <li><Link to="/scope">Scope & Tracks</Link></li>
               <li><Link to="/committee">Committee</Link></li>
               <li><Link to="/special-sessions">Special Sessions</Link></li>
