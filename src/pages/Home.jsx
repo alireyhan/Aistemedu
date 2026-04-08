@@ -1,5 +1,10 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Calendar, MapPin, Users, BookOpen, Clock, Presentation, ChevronRight, FileText, CheckCircle, Award, CreditCard } from 'lucide-react';
+import { 
+  Calendar, MapPin, Users, BookOpen, Clock, Presentation, ChevronRight, 
+  FileText, CheckCircle, Award, CreditCard, Brain, GraduationCap, 
+  Globe, ShieldAlert, Lightbulb, Cpu, FileUp, ClipboardCheck, FileCheck,
+  Scale
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
 import conferencePDF from '../assets/Final - AISTEMEDU2025 Conference Program Day 1 & 2.pdf';
 import khobarCity from '../assets/images/khobar_city.png';
@@ -8,6 +13,11 @@ import split1 from '../assets/split_1.jfif';
 import split2 from '../assets/split_2.jfif';
 import split3 from '../assets/split_3.jpg';
 import { committeesSnapshot } from '../data/committees';
+import pmuLogo from '../assets/footer-logos/blank-img-removebg-preview.png';
+import ieeeAdvancingLogo from '../assets/footer-logos/IEEE-Advancing-Technology-for-Humanity-logo-removebg-preview.png';
+import ieeeSaudiLogo from '../assets/footer-logos/images-removebg-preview.png';
+import cshsLogo from '../assets/cshs-logo.png';
+
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -145,33 +155,38 @@ const Home = () => {
             style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '3rem' }}
           >
             {[
-              "Track 1: AI-Driven Education, Learning Sciences, and Human Development",
-              "Track 2: Mathematics, Computational Intelligence, and AI Foundations",
-              "Track 3: AI for Sustainable Development, Smart Systems, and Environmental Resilience",
-              "Track 4: AI Ethics, Policy, and Global Governance",
-              "Track 5: Innovation, Leadership, and AI-Driven Organizational Transformation",
-              "Track 6: AI for Emerging Technologies, Workforce Intelligence, and Future Skills",
-            ].map((track, idx) => (
+              { title: "Track 1: AI-Driven Education, Learning Sciences, and Human Development", icon: <GraduationCap size={40} /> },
+              { title: "Track 2: Mathematics, Computational Intelligence, and AI Foundations", icon: <Brain size={40} /> },
+              { title: "Track 3: AI for Sustainable Development, Smart Systems, and Environmental Resilience", icon: <Globe size={40} /> },
+              { title: "Track 4: AI Ethics, Policy, and Global Governance", icon: <Scale size={40} /> },
+              { title: "Track 5: Innovation, Leadership, and AI-Driven Organizational Transformation", icon: <Lightbulb size={40} /> },
+              { title: "Track 6: AI for Emerging Technologies, Workforce Intelligence, and Future Skills", icon: <Cpu size={40} /> },
+            ].map((trackItem, idx) => (
               <motion.div 
                 key={idx}
                 variants={cardVariants}
                 whileHover={{ scale: 1.02, transition: { duration: 0.2 }, border: '1px solid var(--primary-color)' }}
                 style={{ 
-                  background: 'var(--glass-bg)',
+                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%)',
                   boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
                   padding: '2.5rem 2rem', 
                   borderRadius: '16px',
                   border: '1px solid var(--glass-border)',
                   backdropFilter: 'blur(20px)',
-                  transition: 'all 0.3s ease'
+                  transition: 'all 0.3s ease',
+                  position: 'relative',
+                  overflow: 'hidden'
                 }}
+
               >
-                <div style={{ height: '4px', width: '40px', background: 'var(--primary-color)', marginBottom: '1.5rem', borderRadius: '2px' }} />
+                <div style={{ color: 'var(--primary-color)', marginBottom: '1.5rem', opacity: 0.9 }}>
+                  {trackItem.icon}
+                </div>
                 <h3 style={{ fontSize: '1.35rem', color: 'white', lineHeight: '1.4', fontWeight: '800' }}>
-                  {track.split(': ')[0]}
+                  {trackItem.title.split(': ')[0]}
                 </h3>
                 <p style={{ color: 'var(--text-secondary)', marginTop: '1rem', fontSize: '1.05rem', lineHeight: '1.6' }}>
-                  {track.split(': ')[1]}
+                  {trackItem.title.split(': ')[1]}
                 </p>
               </motion.div>
             ))}
@@ -204,9 +219,9 @@ const Home = () => {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2.5rem', marginBottom: '4rem' }}>
             {[
-              { label: "Paper Submission", date: "August 15, 2026" },
-              { label: "Acceptance", date: "September 15, 2026" },
-              { label: "Final Paper Submission", date: "September 30, 2026" }
+              { label: "Paper Submission", date: "August 15, 2026", icon: <FileUp size={30} /> },
+              { label: "Acceptance Notice", date: "September 15, 2026", icon: <ClipboardCheck size={30} /> },
+              { label: "Final Paper Submission", date: "September 30, 2026", icon: <FileCheck size={30} /> }
             ].map((item, i) => (
               <motion.div 
                 key={i}
@@ -225,24 +240,26 @@ const Home = () => {
                 }}
               >
                 <div style={{ 
-                  width: '60px', 
-                  height: '60px', 
-                  background: 'var(--primary-color)', 
+                  width: '70px', 
+                  height: '70px', 
+                  background: 'rgba(243, 112, 33, 0.1)', 
+                  color: 'var(--primary-color)',
                   borderRadius: '50%', 
                   position: 'absolute', 
-                  top: '-30px', 
+                  top: '-35px', 
                   left: '50%', 
                   transform: 'translateX(-50%)', 
                   display: 'flex', 
                   alignItems: 'center', 
                   justifyContent: 'center', 
-                  boxShadow: '0 8px 16px rgba(243, 112, 33, 0.3)'
+                  boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
+                  border: '1px solid var(--primary-color)'
                 }}>
-                  <div style={{ width: '16px', height: '16px', background: 'white', borderRadius: '50%' }}></div>
+                  {item.icon}
                 </div>
-                <h3 style={{ fontSize: '1.2rem', marginBottom: '1rem', color: 'white' }}>{item.label}</h3>
+                <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: 'white', fontWeight: '700' }}>{item.label}</h3>
                 <div style={{ height: '2px', background: 'rgba(243, 112, 33, 0.2)', width: '60px', margin: '1.5rem auto' }}></div>
-                <p style={{ color: 'var(--primary-color)', fontSize: '1.1rem', fontWeight: '700' }}>{item.date}</p>
+                <p style={{ color: 'var(--primary-color)', fontSize: '1.2rem', fontWeight: '800' }}>{item.date}</p>
               </motion.div>
             ))}
           </div>
@@ -570,36 +587,72 @@ const Home = () => {
       </section>
 
       {/* 8. SPONSORED BY */}
-      <section style={{ padding: '5rem 0', background: 'var(--secondary-color)', color: 'white', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-        <div className="container">
-          <motion.div variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <h2 style={{ fontSize: '2.5rem', marginBottom: '0.5rem', color: 'white' }}>Sponsored & Organized By</h2>
-            <div style={{ width: '60px', height: '4px', background: 'var(--primary-color)', margin: '1rem auto' }}></div>
-            <p style={{ color: 'rgba(255,255,255,0.7)' }}>With prestigious technical co-sponsorship from IEEE</p>
+      <section style={{ 
+        padding: '8rem 0', 
+        background: 'linear-gradient(180deg, transparent 0%, rgba(243, 112, 33, 0.05) 50%, transparent 100%), radial-gradient(circle at 50% 50%, rgba(14, 27, 77, 1) 0%, #020617 100%)', 
+        color: 'white', 
+        borderTop: '1px solid rgba(255,255,255,0.05)',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        {/* Decorative Blur Orbs */}
+        <div style={{ position: 'absolute', top: '10%', left: '10%', width: '300px', height: '300px', background: 'var(--primary-color)', opacity: 0.05, filter: 'blur(100px)', borderRadius: '50%', pointerEvents: 'none' }}></div>
+        <div style={{ position: 'absolute', bottom: '10%', right: '10%', width: '300px', height: '300px', background: 'var(--secondary-color)', opacity: 0.1, filter: 'blur(100px)', borderRadius: '50%', pointerEvents: 'none' }}></div>
+
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+          <motion.div variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ textAlign: 'center', marginBottom: '5rem' }}>
+            <h2 style={{ fontSize: '3rem', marginBottom: '0.5rem', color: 'white', fontWeight: '800' }}>Sponsored & Organized By</h2>
+            <div style={{ width: '80px', height: '4px', background: 'var(--primary-color)', margin: '1.5rem auto' }}></div>
+            <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>With prestigious technical co-sponsorship from IEEE</p>
           </motion.div>
-          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}
-            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', gap: '4rem' }}>
-            {[
-              { label: "Prince Mohammad Bin Fahd University", abbr: "PMU" },
-              { label: "IEEE — Advancing Technology for Humanity", abbr: "IEEE" },
-              { label: "IEEE Saudi Arabia Section", abbr: "IEEE KSA" },
-              { label: "IEEE Computational Intelligence Society", abbr: "IEEE CIS" },
-            ].map((s, i) => (
-              <motion.div key={i} variants={cardVariants} whileHover={{ scale: 1.08 }}
-                style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-                <div style={{ width: '130px', height: '80px', background: 'white', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '900', fontSize: '1.4rem', color: 'var(--secondary-color)', letterSpacing: '2px', boxShadow: '0 5px 15px rgba(0,0,0,0.2)' }}>
-                  {s.abbr}
-                </div>
-                <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.85rem', textAlign: 'center', maxWidth: '150px' }}>{s.label}</p>
-              </motion.div>
-            ))}
+
+          
+          <motion.div 
+            variants={staggerContainer} 
+            initial="hidden" 
+            whileInView="visible" 
+            viewport={{ once: true }}
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '3rem' }}
+          >
+            {/* First Row: PMU Logo Centered */}
+            <motion.div variants={cardVariants} whileHover={{ scale: 1.05 }} style={{ textAlign: 'center' }}>
+              <img 
+                src={pmuLogo} 
+                alt="Prince Mohammad Bin Fahd University" 
+                style={{ height: '120px', width: 'auto', filter: 'brightness(1.1) drop-shadow(0 0 10px rgba(0,0,0,0.5))' }} 
+              />
+              <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.9rem', marginTop: '1rem', fontWeight: '600', whiteSpace: 'nowrap' }}>Prince Mohammad Bin Fahd University</p>
+            </motion.div>
+
+
+            {/* Second Row: 3 Logos Below */}
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', gap: '4rem' }}>
+              {[
+                { src: ieeeAdvancingLogo, alt: "IEEE — Advancing Technology for Humanity", height: '70px' },
+                { src: ieeeSaudiLogo, alt: "IEEE Saudi Arabia Section", height: '70px' },
+                { src: cshsLogo, alt: "College of Sciences and Human Studies", height: '70px' },
+              ].map((logo, i) => (
+                <motion.div key={i} variants={cardVariants} whileHover={{ scale: 1.08 }} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+                  <img 
+                    src={logo.src} 
+                    alt={logo.alt} 
+                    style={{ height: logo.height, width: 'auto', filter: 'brightness(1.1) drop-shadow(0 5px 15px rgba(0,0,0,0.3))' }} 
+                  />
+                  <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.8rem', textAlign: 'center', whiteSpace: 'nowrap' }}>{logo.alt}</p>
+                </motion.div>
+
+              ))}
+            </div>
+
           </motion.div>
+
           <motion.p variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}
             style={{ textAlign: 'center', color: 'rgba(255,255,255,0.5)', marginTop: '4rem', fontSize: '0.9rem' }}>
             Prince Mohammad Bin Fahd University (PMU), Al Khobar, 31952, Kingdom of Saudi Arabia
           </motion.p>
         </div>
       </section>
+
     </div>
   );
 };

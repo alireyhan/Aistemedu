@@ -3,6 +3,8 @@ import { Mail, MapPin, Phone, Globe, Share2, Link2 } from 'lucide-react';
 import pmuLogo from '../assets/footer-logos/blank-img-removebg-preview.png';
 import ieeeAdvancingLogo from '../assets/footer-logos/IEEE-Advancing-Technology-for-Humanity-logo-removebg-preview.png';
 import ieeeSaudiLogo from '../assets/footer-logos/images-removebg-preview.png';
+import cshsLogo from '../assets/cshs-logo.png';
+
 
 const Footer = () => {
   return (
@@ -66,11 +68,19 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="footer-col" style={{ gridColumn: '1 / -1', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '3rem', marginTop: '2rem', padding: '2rem 0', borderTop: '1px solid var(--glass-border)' }}>
-            <img src={pmuLogo} alt="PMU Logo" style={{ height: '80px', width: 'auto', filter: 'brightness(1.1)' }} />
-            <img src={ieeeAdvancingLogo} alt="IEEE Advancing Technology Logo" style={{ height: '60px', width: 'auto', filter: 'brightness(1.1)' }} />
-            <img src={ieeeSaudiLogo} alt="IEEE Saudi Arabia Logo" style={{ height: '60px', width: 'auto', filter: 'brightness(1.1)' }} />
+          <div className="footer-col" style={{ gridColumn: '1 / -1', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem', marginTop: '2rem', padding: '3rem 0', borderTop: '1px solid var(--glass-border)' }}>
+            <div style={{ textAlign: 'center' }}>
+              <img src={pmuLogo} alt="PMU Logo" style={{ height: '100px', width: 'auto', filter: 'brightness(1.1)' }} />
+              <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.8rem', marginTop: '0.5rem' }}>Organized & Hosted by PMU</p>
+            </div>
+            
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '3rem' }}>
+              <img src={ieeeAdvancingLogo} alt="IEEE Advancing Technology Logo" style={{ height: '60px', width: 'auto', filter: 'brightness(1.1)' }} />
+              <img src={ieeeSaudiLogo} alt="IEEE Saudi Arabia Logo" style={{ height: '60px', width: 'auto', filter: 'brightness(1.1)' }} />
+              <img src={cshsLogo} alt="College of Sciences and Human Studies" style={{ height: '60px', width: 'auto', filter: 'brightness(1.1)' }} />
+            </div>
           </div>
+
 
         </div>
         

@@ -1,6 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import logoMain from '../assets/logomain.png';
+
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -64,8 +66,8 @@ const Header = () => {
       </div>
       <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
         <div className="container nav-container">
-          <Link to="/" className="nav-logo text-gradient">
-            AISTEMEDU 2026
+          <Link to="/" className="nav-logo">
+            <img src={logoMain} alt="AISTEMEDU Logo" style={{ height: '45px', width: 'auto', filter: 'brightness(1.1)' }} />
           </Link>
           <div className="nav-links mobile-hidden">
             <Link to="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>HOME</Link>
