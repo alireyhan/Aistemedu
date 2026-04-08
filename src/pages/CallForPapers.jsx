@@ -87,7 +87,7 @@ const CallForPapers = () => {
                       <h3 style={{ fontSize: '1.15rem', fontWeight: '700', color: 'white', marginBottom: '0.3rem' }}>{item.title}</h3>
                       <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem' }}>{item.desc}</p>
                     </div>
-                    <div style={{ fontSize: '2.2rem', fontWeight: '900', color: 'var(--primary-color)', marginLeft: '1rem' }}>
+                    <div style={{ fontSize: '1.6rem', fontWeight: '700', background: 'linear-gradient(135deg, #fbbf24 0%, #f37021 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', marginLeft: '1rem' }}>
                       {item.price}
                     </div>
                   </div>

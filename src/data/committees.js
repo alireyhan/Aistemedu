@@ -14,7 +14,7 @@ export const committeesSnapshot = [
     ]
   },
   {
-    title: "Deputy Conference Chairs",
+    title: "Deputy Conference Chair",
     color: "#0ea5e9",
     members: [
       { name: "Dr. Muhammad Waqar Ashraf", role: "Dean, College of Science & Human Studies", affiliation: "PMU, Saudi Arabia", photoUrl: "https://faculty.pmu.edu.sa/PMUFaculties/Details/mashraf", image: "https://faculty.pmu.edu.sa/Admin/Upload/Faculty_PIC/635308147823663283_PIC_Dr-Waqar.png" }

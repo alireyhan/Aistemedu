@@ -6,7 +6,7 @@
   --accent-color: #f37021;
   --accent-hover: #e06016;
   --text-primary: #ffffff;       /* White text */
-  --text-secondary: rgba(255, 255, 255, 0.7); /* Muted white text */
+  --text-secondary: #f8fafc;     /* Soft slate white (elegant and highly visible) */
   --text-inverse: #0e1b4d;       /* Dark text on light items */
   --background-dark: #020617;    /* Near black */
   --background-light: #0a0e27;   /* Deep Navy */
@@ -63,7 +63,7 @@
 
 .dates-banner {
   height: var(--banner-height);
-  background: var(--primary-color);
+  background: linear-gradient(90deg, #f97316, #ea580c); /* Beautiful, elegant medium orange */
   color: white;
   display: flex;
   align-items: center;
@@ -94,21 +94,22 @@
 .ticker-item {
   display: inline-block;
   padding: 0 2.5rem;
-  font-size: 0.9rem;
-  font-weight: 900;
-  background: linear-gradient(90deg, #000000, #ffffff, #000000);
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #ffffff, #fed7aa, #ffffff);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: shine 3s linear infinite;
-  text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
 .ticker-item span {
-  color: #000000;
-  -webkit-text-fill-color: #000000;
+  color: #0f172a; /* Deep slate/navy for maximum contrast against the orange */
+  -webkit-text-fill-color: #0e1b4d; /* Matches your brand dark secondary color */
+  font-weight: 900;
   margin-right: 0.5rem;
 }
 
@@ -145,6 +146,11 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: 1.2;
+}
+
+p {
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 a {

@@ -281,7 +281,7 @@ const Home = () => {
                          <h3 style={{ fontSize: '1.15rem', fontWeight: '700', color: 'white', marginBottom: '0.3rem' }}>{item.title}</h3>
                          <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>{item.desc}</p>
                        </div>
-                       <div style={{ fontSize: '2.2rem', fontWeight: '900', color: 'var(--primary-color)', marginLeft: '1rem' }}>
+                       <div style={{ fontSize: '1.6rem', fontWeight: '700', background: 'linear-gradient(135deg, #fbbf24 0%, #f37021 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', marginLeft: '1rem' }}>
                          {item.price}
                        </div>
                      </div>
@@ -334,142 +334,255 @@ const Home = () => {
             </p>
           </motion.div>
 
-          {committeesSnapshot.map((committee, cIdx) => (
-            <div key={cIdx} style={{ marginBottom: '12rem', position: 'relative' }}>
-              {/* Category Background Text - Innovation */}
-              <div style={{ 
-                position: 'absolute', 
-                top: '-50px', 
-                left: '-20px', 
-                fontSize: '12rem', 
-                fontWeight: '900', 
-                color: 'rgba(255,255,255,0.02)', 
-                zIndex: -1, 
-                whiteSpace: 'nowrap',
-                pointerEvents: 'none',
-                textTransform: 'uppercase'
-              }}>
-                {committee.title.split(' ')[0]}
-              </div>
+          {(() => {
+            const chairTitles = ["Honorary Chair", "Conference Chair", "Deputy Conference Chair"];
+            const mainChairs = committeesSnapshot.filter(c => chairTitles.includes(c.title));
+            const otherCommittees = committeesSnapshot.filter(c => !chairTitles.includes(c.title));
 
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                style={{ 
-                  textAlign: cIdx % 2 === 0 ? 'left' : 'right', 
-                  marginBottom: '4rem',
-                  padding: '0 2rem'
-                }}
-              >
-                <h3 style={{ 
-                  color: 'white', 
-                  fontSize: 'clamp(2rem, 4vw, 3.5rem)', 
-                  fontWeight: '800', 
-                  marginBottom: '1rem',
-                  letterSpacing: '-1px'
-                }}>
-                  {committee.title.split(' ').map((word, i) => (
-                    <span key={i} style={{ color: i === 0 ? committee.color : 'inherit' }}>{word} </span>
-                  ))}
-                </h3>
-                <div style={{ 
-                  width: '120px', 
-                  height: '6px', 
-                  background: `linear-gradient(90deg, ${committee.color}, transparent)`, 
-                  margin: cIdx % 2 === 0 ? '0 0 1.5rem' : '0 0 1.5rem auto',
-                  borderRadius: '10px'
-                }}></div>
-              </motion.div>
-              
-              <div style={{ 
-                display: 'flex',
-                flexWrap: 'wrap',
-                justifyContent: 'center',
-                gap: '2.5rem',
-                padding: '0 1rem'
-              }}>
-                {(committee.title === "Scientific Committee" ? committee.members.slice(0, 10) : committee.members).map((member, mIdx) => (
-                  <motion.div 
-                    key={mIdx} 
-                    initial={{ opacity: 0, y: 50, rotate: -2 }}
-                    whileInView={{ opacity: 1, y: 0, rotate: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ 
-                      duration: 0.6, 
-                      delay: (mIdx % 6) * 0.1,
-                      type: 'spring',
-                      stiffness: 100 
-                    }}
-                    style={{ 
-                      flex: committee.members.length < 4 ? '0 1 400px' : '0 1 300px',
-                      background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))', 
-                      border: '1px solid rgba(255,255,255,0.1)', 
-                      borderRadius: '30px', 
-                      padding: '2.5rem',
-                      backdropFilter: 'blur(30px)',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      textAlign: 'center',
-                      position: 'relative',
-                      overflow: 'hidden',
-                      boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
-                      marginTop: (mIdx % 2 === 0 && committee.members.length > 4) ? '2rem' : '0' // Staggered effect
-                    }}
-                    whileHover={{ 
-                      y: -15, 
-                      scale: 1.02,
-                      borderColor: committee.color,
-                      boxShadow: `0 0 40px ${committee.color}22` 
-                    }}
-                  >
-                    {/* Decorative Element */}
-                    <div style={{ 
-                      position: 'absolute', 
-                      top: '-10px', 
-                      right: '-10px', 
-                      width: '60px', 
-                      height: '60px', 
-                      background: committee.color, 
-                      opacity: 0.1, 
-                      borderRadius: '50%',
-                      filter: 'blur(20px)'
-                    }}></div>
+            return (
+              <>
+                {/* 1. Combined Main Chairs Row */}
+                <div style={{ marginBottom: '8rem', position: 'relative' }}>
+                  <div style={{ 
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    justifyContent: 'center',
+                    gap: '2.5rem',
+                    padding: '0 1rem'
+                  }}>
+                    {mainChairs.map((committee, cIdx) => (
+                      <motion.div 
+                        key={`main-chair-col-${cIdx}`} 
+                        initial={{ opacity: 0, y: 60 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 0.7, delay: cIdx * 0.2, type: 'spring', stiffness: 80 }}
+                        style={{ flex: '1 1 0', minWidth: '300px', display: 'flex', flexDirection: 'column' }}
+                      >
+                        {/* Animated Header for this chair */}
+                        <div
+                          style={{ 
+                            textAlign: 'center', 
+                            marginBottom: '3rem',
+                            padding: '0 1rem'
+                          }}
+                        >
+                          <h3 style={{ 
+                            color: 'white', 
+                            fontSize: 'clamp(1.2rem, 2vw, 1.8rem)', 
+                            fontWeight: '800', 
+                            marginBottom: '0.8rem',
+                            letterSpacing: '-1px'
+                          }}>
+                            {committee.title.split(' ').map((word, i) => (
+                              <span key={i} style={{ color: i === 0 ? committee.color : 'inherit' }}>{word} </span>
+                            ))}
+                          </h3>
+                          <div style={{ 
+                            width: '100px', 
+                            height: '5px', 
+                            background: `linear-gradient(90deg, ${committee.color}, transparent)`, 
+                            margin: '0 auto',
+                            borderRadius: '10px'
+                          }}></div>
+                        </div>
 
-                    <div style={{ 
-                      width: '120px', 
-                      height: '120px', 
-                      borderRadius: '24px', 
-                      background: 'rgba(255,255,255,0.03)', 
-                      marginBottom: '2rem', 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      justifyContent: 'center',
-                      border: `1px solid rgba(255,255,255,0.1)`,
-                      overflow: 'hidden',
-                      transform: 'rotate(-3deg)',
-                      boxShadow: '0 15px 30px rgba(0,0,0,0.3)'
-                    }}>
-                      {member.image ? (
-                        <img src={member.image} alt={member.name} style={{ width: '100%', height: '100%', objectFit: 'cover', transform: 'rotate(3deg)' }} />
-                      ) : (
-                        <span style={{ fontSize: '2.5rem', fontWeight: '900', color: committee.color, transform: 'rotate(3deg)' }}>
-                          {member.name.split(' ').filter(n => !n.includes('.')).slice(0, 2).map(n => n[0]).join('')}
-                        </span>
-                      )}
-                    </div>
+                        {/* Animated Card for member */}
+                        {committee.members.map((member, mIdx) => (
+                          <motion.div 
+                            key={`chair-member-${cIdx}-${mIdx}`} 
+                            style={{ 
+                              flex: '1',
+                              background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))', 
+                              border: '1px solid rgba(255,255,255,0.1)', 
+                              borderRadius: '30px', 
+                              padding: '2rem 1.5rem',
+                              backdropFilter: 'blur(30px)',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              alignItems: 'center',
+                              textAlign: 'center',
+                              position: 'relative',
+                              overflow: 'hidden',
+                              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+                            }}
+                            whileHover={{ 
+                              y: -15, 
+                              scale: 1.02,
+                              borderColor: committee.color,
+                              boxShadow: `0 0 40px ${committee.color}22` 
+                            }}
+                          >
+                            <div style={{ 
+                              position: 'absolute', 
+                              top: '-10px', 
+                              right: '-10px', 
+                              width: '60px', 
+                              height: '60px', 
+                              background: committee.color, 
+                              opacity: 0.1, 
+                              borderRadius: '50%',
+                              filter: 'blur(20px)'
+                            }}></div>
+
+                            <div style={{ 
+                              width: '100%', 
+                              maxWidth: '240px', 
+                              aspectRatio: '1/1', 
+                              borderRadius: '24px', 
+                              background: 'rgba(255,255,255,0.03)', 
+                              marginBottom: '2rem', 
+                              display: 'flex', 
+                              alignItems: 'center', 
+                              justifyContent: 'center',
+                              border: `1px solid rgba(255,255,255,0.1)`,
+                              overflow: 'hidden',
+                              transform: 'rotate(-3deg)',
+                              boxShadow: '0 15px 30px rgba(0,0,0,0.3)'
+                            }}>
+                              {member.image ? (
+                                <img src={member.image} alt={member.name} style={{ width: '100%', height: '100%', objectFit: 'cover', transform: 'rotate(3deg)' }} />
+                              ) : (
+                                <span style={{ fontSize: '2.5rem', fontWeight: '900', color: committee.color, transform: 'rotate(3deg)' }}>
+                                  {member.name.split(' ').filter(n => !n.includes('.')).slice(0, 2).map(n => n[0]).join('')}
+                                </span>
+                              )}
+                            </div>
+                            
+                            <h4 style={{ color: 'white', fontSize: '1.25rem', fontWeight: '800', marginBottom: '0.4rem', lineHeight: '1.2' }}>{member.name}</h4>
+                            <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', fontWeight: '700', marginBottom: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px' }}>{member.role}</p>
+                            <div style={{ height: '1px', width: '40%', background: 'rgba(255,255,255,0.1)', marginBottom: '0.8rem' }}></div>
+                            <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: '1.4', fontWeight: '500' }}>{member.affiliation}</p>
+                          </motion.div>
+                        ))}
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* 2. Other Committees */}
+                {otherCommittees.map((committee, cIdx) => (
+                  <div key={`other-${cIdx}`} style={{ marginBottom: '12rem', position: 'relative' }}>
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8 }}
+                      style={{ 
+                        textAlign: cIdx % 2 === 0 ? 'left' : 'right', 
+                        marginBottom: '4rem',
+                        padding: '0 2rem'
+                      }}
+                    >
+                      <h3 style={{ 
+                        color: 'white', 
+                        fontSize: 'clamp(1.5rem, 2.5vw, 2.5rem)', 
+                        fontWeight: '800', 
+                        marginBottom: '1rem',
+                        letterSpacing: '-1px'
+                      }}>
+                        {committee.title.split(' ').map((word, i) => (
+                          <span key={i} style={{ color: i === 0 ? committee.color : 'inherit' }}>{word} </span>
+                        ))}
+                      </h3>
+                      <div style={{ 
+                        width: '120px', 
+                        height: '6px', 
+                        background: `linear-gradient(90deg, ${committee.color}, transparent)`, 
+                        margin: cIdx % 2 === 0 ? '0 0 1.5rem' : '0 0 1.5rem auto',
+                        borderRadius: '10px'
+                      }}></div>
+                    </motion.div>
                     
-                    <h4 style={{ color: 'white', fontSize: '1.4rem', fontWeight: '800', marginBottom: '0.6rem', lineHeight: '1.2' }}>{member.name}</h4>
-                    <p style={{ color: committee.color, fontSize: '0.9rem', fontWeight: '800', marginBottom: '1rem', textTransform: 'uppercase', letterSpacing: '2px' }}>{member.role}</p>
-                    <div style={{ height: '1px', width: '40%', background: 'rgba(255,255,255,0.1)', marginBottom: '1rem' }}></div>
-                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: '1.6', fontWeight: '500' }}>{member.affiliation}</p>
-                  </motion.div>
+                    <div style={{ 
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      justifyContent: 'center',
+                      gap: '2.5rem',
+                      padding: '0 1rem'
+                    }}>
+                      {(committee.title === "Scientific Committee" ? committee.members.slice(0, 10) : committee.members).map((member, mIdx) => (
+                        <motion.div 
+                          key={mIdx} 
+                          initial={{ opacity: 0, y: 50, rotate: -2 }}
+                          whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                          viewport={{ once: true, margin: "-50px" }}
+                          transition={{ 
+                            duration: 0.6, 
+                            delay: (mIdx % 6) * 0.1,
+                            type: 'spring',
+                            stiffness: 100 
+                          }}
+                          style={{ 
+                            flex: committee.members.length < 4 ? '0 1 400px' : '0 1 300px',
+                            background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))', 
+                            border: '1px solid rgba(255,255,255,0.1)', 
+                            borderRadius: '30px', 
+                            padding: '2.5rem',
+                            backdropFilter: 'blur(30px)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            textAlign: 'center',
+                            position: 'relative',
+                            overflow: 'hidden',
+                            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+                            marginTop: (mIdx % 2 === 0 && committee.members.length > 4) ? '2rem' : '0' 
+                          }}
+                          whileHover={{ 
+                            y: -15, 
+                            scale: 1.02,
+                            borderColor: committee.color,
+                            boxShadow: `0 0 40px ${committee.color}22` 
+                          }}
+                        >
+                          <div style={{ 
+                            position: 'absolute', 
+                            top: '-10px', 
+                            right: '-10px', 
+                            width: '60px', 
+                            height: '60px', 
+                            background: committee.color, 
+                            opacity: 0.1, 
+                            borderRadius: '50%',
+                            filter: 'blur(20px)'
+                          }}></div>
+
+                          <div style={{ 
+                            width: '120px', 
+                            height: '120px', 
+                            borderRadius: '24px', 
+                            background: 'rgba(255,255,255,0.03)', 
+                            marginBottom: '2rem', 
+                            display: 'flex', 
+                            alignItems: 'center', 
+                            justifyContent: 'center',
+                            border: `1px solid rgba(255,255,255,0.1)`,
+                            overflow: 'hidden',
+                            transform: 'rotate(-3deg)',
+                            boxShadow: '0 15px 30px rgba(0,0,0,0.3)'
+                          }}>
+                            {member.image ? (
+                              <img src={member.image} alt={member.name} style={{ width: '100%', height: '100%', objectFit: 'cover', transform: 'rotate(3deg)' }} />
+                            ) : (
+                              <span style={{ fontSize: '2.5rem', fontWeight: '900', color: committee.color, transform: 'rotate(3deg)' }}>
+                                {member.name.split(' ').filter(n => !n.includes('.')).slice(0, 2).map(n => n[0]).join('')}
+                              </span>
+                            )}
+                          </div>
+                          
+                          <h4 style={{ color: 'white', fontSize: '1.4rem', fontWeight: '800', marginBottom: '0.6rem', lineHeight: '1.2' }}>{member.name}</h4>
+                          <p style={{ color: committee.color, fontSize: '0.9rem', fontWeight: '800', marginBottom: '1rem', textTransform: 'uppercase', letterSpacing: '2px' }}>{member.role}</p>
+                          <div style={{ height: '1px', width: '40%', background: 'rgba(255,255,255,0.1)', marginBottom: '1rem' }}></div>
+                          <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: '1.6', fontWeight: '500' }}>{member.affiliation}</p>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
                 ))}
-              </div>
-            </div>
-          ))}
+              </>
+            );
+          })()}
 
           <motion.div 
             initial={{ opacity: 0 }}
@@ -530,7 +643,7 @@ const Home = () => {
               style={{ height: '500px', borderRadius: '24px', overflow: 'hidden', border: '1px solid var(--glass-border)', boxShadow: '0 20px 50px rgba(0,0,0,0.5)' }}
             >
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3576.471804245781!2d50.1837833!3d26.2750833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49e917d5225139%3A0xc319114f85e49339!2sPrince%20Mohammad%20Bin%20Fahd%20University!5e0!3m2!1sen!2ssa!4v1714210000000!5m2!1sen!2ssa" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14197.893112258832!2d50.0934331!3d26.1472848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49d950138d15c5%3A0xdc2e01b3cf357894!2sPrince%20Mohammad%20Bin%20Fahd%20University!5e0!3m2!1sen!2ssa!4v1714210000000!5m2!1sen!2ssa" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 

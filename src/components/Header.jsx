@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import logoMain from '../assets/logomain.png';
+import logoMain from '../assets/logo.png';
 
 
 const Header = () => {
@@ -66,14 +66,14 @@ const Header = () => {
       </div>
       <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
         <div className="container nav-container">
-          <Link to="/" className="nav-logo">
-            <img src={logoMain} alt="AISTEMEDU Logo" style={{ height: '45px', width: 'auto', filter: 'brightness(1.1)' }} />
+          <Link to="/" className="nav-logo" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textDecoration: 'none', lineHeight: '1.2' }}>
+            <img src={logoMain} alt="AISTEMEDU Logo" style={{ height: '50px', width: 'auto', filter: 'brightness(1.1)' }} />
+            <span className="text-gradient" style={{ fontSize: '0.85rem', fontWeight: '800', letterSpacing: '2px', marginTop: '4px', textAlign: 'center' }}>AISTEMEDU 2026</span>
           </Link>
           <div className="nav-links mobile-hidden">
             <Link to="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>HOME</Link>
             <Link to="/call-for-papers" className={`nav-link ${isActive('/call-for-papers') ? 'active' : ''}`}>CALL FOR PAPERS</Link>
             <Link to="/scope" className={`nav-link ${isActive('/scope') ? 'active' : ''}`}>SCOPE</Link>
-            <Link to="/committee" className={`nav-link ${isActive('/committee') ? 'active' : ''}`}>COMMITTEE</Link>
             <Link to="/special-sessions" className={`nav-link ${isActive('/special-sessions') ? 'active' : ''}`}>SPECIAL SESSIONS</Link>
             <Link to="/khobar-city" className={`nav-link ${isActive('/khobar-city') ? 'active' : ''}`}>KHOBAR CITY</Link>
             <Link to="/accommodation" className={`nav-link ${isActive('/accommodation') ? 'active' : ''}`}>ACCOMMODATION</Link>
@@ -96,7 +96,6 @@ const Header = () => {
             <Link to="/" className={`mobile-nav-link ${isActive('/') ? 'active' : ''}`}>HOME</Link>
             <Link to="/call-for-papers" className={`mobile-nav-link ${isActive('/call-for-papers') ? 'active' : ''}`}>CALL FOR PAPERS</Link>
             <Link to="/scope" className={`mobile-nav-link ${isActive('/scope') ? 'active' : ''}`}>SCOPE</Link>
-            <Link to="/committee" className={`mobile-nav-link ${isActive('/committee') ? 'active' : ''}`}>COMMITTEE</Link>
             <Link to="/special-sessions" className={`mobile-nav-link ${isActive('/special-sessions') ? 'active' : ''}`}>SPECIAL SESSIONS</Link>
             <Link to="/khobar-city" className={`mobile-nav-link ${isActive('/khobar-city') ? 'active' : ''}`}>KHOBAR CITY</Link>
             <Link to="/accommodation" className={`mobile-nav-link ${isActive('/accommodation') ? 'active' : ''}`}>ACCOMMODATION</Link>
