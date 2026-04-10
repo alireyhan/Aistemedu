@@ -266,9 +266,9 @@ const Home = () => {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', gap: '2rem' }}>
             <div className="glass-panel" style={{ padding: '3rem', backdropFilter: 'blur(20px)' }}>
-              <h2 style={{ fontSize: '2rem', marginBottom: '2.5rem', display: 'flex', alignItems: 'center', gap: '1rem', color: 'white' }}>
+              <h2 style={{ fontSize: 'clamp(1.1rem, 3.2vw, 1.6rem)', marginBottom: '2.5rem', display: 'flex', alignItems: 'center', gap: '1rem', color: 'white' }}>
                  <CreditCard color="var(--primary-color)" strokeWidth={2.5} size={32} />
-                 Registration Fees (for Online & In-person)
+                 Registration Fees <span style={{ color: 'var(--primary-color)' }}>(for Online & In-person)</span>
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                   {[

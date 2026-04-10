@@ -72,9 +72,9 @@ const CallForPapers = () => {
           </div>
           
           <div style={{ background: 'var(--glass-bg)', borderRadius: '24px', padding: 'clamp(2rem, 4vw, 3rem)', boxShadow: '0 10px 30px rgba(0,0,0,0.3)', border: '1px solid var(--glass-border)', backdropFilter: 'blur(12px)' }}>
-            <h2 style={{ fontSize: '2rem', marginBottom: '2.5rem', display: 'flex', alignItems: 'center', gap: '1rem', color: 'white' }}>
+            <h2 style={{ fontSize: 'clamp(1.4rem, 4vw, 1.8rem)', marginBottom: '2.5rem', display: 'flex', alignItems: 'center', gap: '1rem', color: 'white' }}>
                <CreditCard color="var(--primary-color)" strokeWidth={2.5} size={32} />
-               Registration Fees (for Online & In-person)
+               Registration Fees <span style={{ color: 'var(--primary-color)' }}>(for Online & In-person)</span>
             </h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                {[
