@@ -10,7 +10,7 @@ export const committeesSnapshot = [
     title: "Conference Chair",
     color: "#0284c7",
     members: [
-      { name: "Dr. Faisal Yousif Al Anezi", role: "Vice President Academic Affairs", affiliation: "PMU, Saudi Arabia", photoUrl: "https://wfsf2023paris.org/speaker/dr-faisal-yousif-al-anezi/", image: "https://wfsf2023paris.org/wp-content/uploads/2023/10/Dr.-Faisal-foto.jpg" }
+      { name: "Dr. Faisal Yousif Al Anezi", role: "Vice President Academic Affairs", affiliation: "PMU, Saudi Arabia", photoUrl: "https://wfsf2023paris.org/speaker/dr-faisal-yousif-al-anezi/", image: "https://pmfcfs.pmu.edu.sa/images/fac-img/Dr-Faisal.JPG" }
     ]
   },
   {
