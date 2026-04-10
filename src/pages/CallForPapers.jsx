@@ -78,9 +78,9 @@ const CallForPapers = () => {
             </h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                {[
-                 { title: "Non-IEEE Member", price: "$250", desc: "Full Conference Access" },
-                 { title: "IEEE Member", price: "$200", desc: "Full Access & Proceedings" },
-                 { title: "Online Presentation", price: "$100", desc: "Digital Access & Certification" }
+                 { title: "Non-IEEE Member", price: "$100", desc: "Full Conference Access" },
+                 { title: "IEEE Member", price: "$80", desc: "Full Access & Proceedings" },
+                 { title: "Online Presentation", price: "$80", desc: "Digital Access & Certification" }
                ].map((item, i) => (
                   <div key={i} style={{ padding: '1.5rem', background: 'rgba(0,0,0,0.2)', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', transition: 'all 0.3s', cursor: 'default' }} onMouseEnter={e => { e.currentTarget.style.border = '1px solid rgba(243, 112, 33, 0.4)'; e.currentTarget.style.background = 'rgba(243, 112, 33, 0.1)'; e.currentTarget.style.transform = 'translateY(-2px)' }} onMouseLeave={e => { e.currentTarget.style.border = '1px solid rgba(255,255,255,0.05)'; e.currentTarget.style.background = 'rgba(0,0,0,0.2)'; e.currentTarget.style.transform = 'translateY(0)' }}>
                     <div>
