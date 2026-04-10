@@ -207,7 +207,7 @@ const Home = () => {
       </section>
 
       {/* 4. CALL FOR PAPERS SECTION */}
-      <section className="section" style={{ background: 'transparent', paddingTop: '1rem' }}>
+      <section className="section" style={{ background: 'transparent', paddingTop: '1rem', paddingBottom: '0.5rem' }}>
         <div className="container">
           <motion.div variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ textAlign: 'center', marginBottom: '4rem' }}>
             <h2 style={{ fontSize: '3rem', color: 'white' }}>Call for <span style={{ color: 'var(--primary-color)' }}>Paper</span></h2>
@@ -265,11 +265,11 @@ const Home = () => {
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', gap: '2rem' }}>
-            <div className="glass-panel" style={{ padding: '3rem', backdropFilter: 'blur(20px)' }}>
-              <h2 style={{ fontSize: 'clamp(1.1rem, 3.2vw, 1.6rem)', marginBottom: '2.5rem', display: 'flex', alignItems: 'center', gap: '1rem', color: 'white' }}>
-                 <CreditCard color="var(--primary-color)" strokeWidth={2.5} size={32} />
+            <div className="glass-panel" style={{ padding: '1.5rem', backdropFilter: 'blur(20px)' }}>
+               <h2 style={{ fontSize: 'clamp(1rem, 3.2vw, 1.35rem)', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.8rem', color: 'white', whiteSpace: 'nowrap' }}>
+                 <CreditCard color="var(--primary-color)" strokeWidth={2.5} size={28} style={{ flexShrink: 0 }} />
                  Registration Fees <span style={{ color: 'var(--primary-color)' }}>(for Online & In-person)</span>
-              </h2>
+               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                   {[
                     { title: "Non-IEEE Member", price: "$100", desc: "Full Conference Access" },
@@ -286,25 +286,25 @@ const Home = () => {
                      </div>
                   ))}
               </div>
-              <div style={{ marginTop: '2.5rem', textAlign: 'center' }}>
+              <div style={{ marginTop: '1rem', textAlign: 'center' }}>
                 <Link to="/call-for-papers" className="btn btn-outline" style={{ padding: '1rem 2.5rem' }}>View All Fees →</Link>
               </div>
             </div>
 
-            <div className="glass-panel" style={{ padding: '3rem', backdropFilter: 'blur(20px)', display: 'flex', flexDirection: 'column', justifyItems: 'center', alignItems: 'center', textAlign: 'center' }}>
-              <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: 'rgba(243, 112, 33, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
-                 <FileText color="var(--primary-color)" size={40} strokeWidth={2} />
+            <div className="glass-panel" style={{ padding: '1.5rem', backdropFilter: 'blur(20px)', display: 'flex', flexDirection: 'column', justifyItems: 'center', alignItems: 'center', textAlign: 'center' }}>
+              <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: 'rgba(243, 112, 33, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
+                 <FileText color="var(--primary-color)" size={32} strokeWidth={2} />
               </div>
-              <h2 style={{ fontSize: '2.2rem', marginBottom: '1rem', color: 'white' }}>Ready to <span style={{ color: 'var(--primary-color)'}}>Submit?</span></h2>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', marginBottom: '2.5rem', maxWidth: '300px' }}>Join leading researchers and submit your original work through EasyChair.</p>
-              <a href="https://easychair.org/account/signin?l=8568301878240743666.1775567869.25b8e943" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ padding: '1rem 3rem', marginBottom: '2.5rem' }}>
+              <h2 style={{ fontSize: '1.8rem', marginBottom: '0.8rem', color: 'white' }}>Ready to <span style={{ color: 'var(--primary-color)'}}>Submit?</span></h2>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', marginBottom: '1.2rem', maxWidth: '300px' }}>Join leading researchers and submit your original work through EasyChair.</p>
+              <a href="https://easychair.org/account/signin?l=8568301878240743666.1775567869.25b8e943" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ padding: '0.8rem 2.5rem', marginBottom: '1.2rem', fontSize: '0.9rem' }}>
                 Submit
               </a>
               
               <div style={{ height: '1px', background: 'rgba(255,255,255,0.1)', width: '100%', margin: '1rem 0' }}></div>
               
-              <div style={{ marginTop: '1.5rem' }}>
-                <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', color: 'white', fontWeight: '700' }}>Call for Paper!</h3>
+              <div style={{ marginTop: '1rem' }}>
+                <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem', color: 'white', fontWeight: '700' }}>Call for Paper!</h3>
                 <a href={conferencePDF} target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ padding: '0.8rem 2rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
                   <Calendar size={18} /> Download Call for Paper (PDF)
                 </a>
@@ -315,14 +315,14 @@ const Home = () => {
       </section>
       
       {/* 7. DYNAMIC COMMITTEE REVEAL - SHOWING ALL MEMBERS */}
-      <section className="section" style={{ background: 'transparent', position: 'relative', padding: '10rem 0' }}>
+      <section className="section" style={{ background: 'transparent', position: 'relative', padding: '4rem 0' }}>
         <div className="container">
           <motion.div 
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1 }}
-            style={{ textAlign: 'center', marginBottom: '6rem' }}
+            style={{ textAlign: 'center', marginBottom: '3rem' }}
           >
             <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', color: 'white', fontWeight: '800', marginBottom: '1.5rem' }}>
               The Organizing <span style={{ color: 'var(--primary-color)' }}>Committees</span>
