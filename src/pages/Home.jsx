@@ -6,7 +6,7 @@ import {
   Scale
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import conferencePDF from '../assets/Call_For_Paper_AISTEMEDU 2026.pdf';
+import conferencePDF from '../assets/updated doc.pdf';
 import khobarCity from '../assets/images/khobar_city.png';
 import landmarksSet from '../assets/khobar_landmarks_set_png_1775599490029.png';
 import split1 from '../assets/split_1.jfif';
@@ -268,13 +268,12 @@ const Home = () => {
             <div className="glass-panel" style={{ padding: '3rem', backdropFilter: 'blur(20px)' }}>
               <h2 style={{ fontSize: '2rem', marginBottom: '2.5rem', display: 'flex', alignItems: 'center', gap: '1rem', color: 'white' }}>
                  <CreditCard color="var(--primary-color)" strokeWidth={2.5} size={32} />
-                 Registration Fees
+                 Registration Fees (for Online & In-person)
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                   {[
                     { title: "Non-IEEE Member", price: "$100", desc: "Full Conference Access" },
-                    { title: "IEEE Member", price: "$80", desc: "Full Access & Proceedings" },
-                    { title: "Online Presentation", price: "$80", desc: "Digital Access & Certification" }
+                    { title: "IEEE Member", price: "$80", desc: "Full Access & Proceedings" }
                   ].map((item, i) => (
                      <div key={i} style={{ padding: '1.5rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', border: '1px solid var(--glass-border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                        <div>

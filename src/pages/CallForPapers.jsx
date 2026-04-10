@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import conferencePDF from '../assets/Call_For_Paper_AISTEMEDU 2026.pdf';
+import conferencePDF from '../assets/updated doc.pdf';
 import { Calendar, CreditCard, Clock, CheckCircle, FileText, Award } from 'lucide-react';
 
 const CallForPapers = () => {
@@ -74,13 +74,12 @@ const CallForPapers = () => {
           <div style={{ background: 'var(--glass-bg)', borderRadius: '24px', padding: 'clamp(2rem, 4vw, 3rem)', boxShadow: '0 10px 30px rgba(0,0,0,0.3)', border: '1px solid var(--glass-border)', backdropFilter: 'blur(12px)' }}>
             <h2 style={{ fontSize: '2rem', marginBottom: '2.5rem', display: 'flex', alignItems: 'center', gap: '1rem', color: 'white' }}>
                <CreditCard color="var(--primary-color)" strokeWidth={2.5} size={32} />
-               Registration Fees
+               Registration Fees (for Online & In-person)
             </h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                {[
-                 { title: "Non-IEEE Member", price: "$100", desc: "Full Conference Access" },
-                 { title: "IEEE Member", price: "$80", desc: "Full Access & Proceedings" },
-                 { title: "Online Presentation", price: "$80", desc: "Digital Access & Certification" }
+                  { title: "Non-IEEE Member", price: "$100", desc: "Full Conference Access" },
+                  { title: "IEEE Member", price: "$80", desc: "Full Access & Proceedings" }
                ].map((item, i) => (
                   <div key={i} style={{ padding: '1.5rem', background: 'rgba(0,0,0,0.2)', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', transition: 'all 0.3s', cursor: 'default' }} onMouseEnter={e => { e.currentTarget.style.border = '1px solid rgba(243, 112, 33, 0.4)'; e.currentTarget.style.background = 'rgba(243, 112, 33, 0.1)'; e.currentTarget.style.transform = 'translateY(-2px)' }} onMouseLeave={e => { e.currentTarget.style.border = '1px solid rgba(255,255,255,0.05)'; e.currentTarget.style.background = 'rgba(0,0,0,0.2)'; e.currentTarget.style.transform = 'translateY(0)' }}>
                     <div>
