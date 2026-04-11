@@ -273,7 +273,7 @@ const Home = () => {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                   {[
                     { title: "Non-IEEE Member", price: "$100", desc: "Full Conference Access" },
-                    { title: "IEEE Member", price: "$80", desc: "Full Access & Proceedings" }
+                    { title: "IEEE Member", price: "$80", desc: "Full Conference Access" }
                   ].map((item, i) => (
                      <div key={i} style={{ padding: '1.5rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', border: '1px solid var(--glass-border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                        <div>
