@@ -259,7 +259,7 @@ const Home = () => {
                 </div>
                 <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: 'white', fontWeight: '700' }}>{item.label}</h3>
                 <div style={{ height: '2px', background: 'rgba(243, 112, 33, 0.2)', width: '60px', margin: '1.5rem auto' }}></div>
-                <p style={{ color: 'var(--primary-color)', fontSize: '1.2rem', fontWeight: '800' }}>{item.date}</p>
+                <p style={{ color: 'var(--primary-color)', fontSize: '1.2rem', fontWeight: '800', textAlign: 'center' }}>{item.date}</p>
               </motion.div>
             ))}
           </div>

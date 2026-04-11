@@ -43,7 +43,7 @@ const CallForPapers = () => {
               </div>
               <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'white' }}>{item.title}</h2>
               <div style={{ height: '2px', background: 'rgba(243, 112, 33, 0.4)', width: '60px', margin: '1.5rem auto' }}></div>
-              <p style={{ color: 'var(--primary-color)', fontSize: '1.1rem', fontWeight: 'bold' }}>{item.date}</p>
+              <p style={{ color: 'var(--primary-color)', fontSize: '1.1rem', fontWeight: 'bold', textAlign: 'center' }}>{item.date}</p>
             </div>
           ))}
         </div>
