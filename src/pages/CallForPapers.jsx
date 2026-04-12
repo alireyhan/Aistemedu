@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import conferencePDF from '../assets/updated doc.pdf';
+import conferencePDF from '../assets/Call_For_Paper_AISTEMEDU 2026 (Final).pdf';
 import { Calendar, CreditCard, Clock, CheckCircle, FileText, Award, ShieldAlert } from 'lucide-react';
 
 const CallForPapers = () => {

@@ -6,7 +6,7 @@ import {
   Scale
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import conferencePDF from '../assets/updated doc.pdf';
+import conferencePDF from '../assets/Call_For_Paper_AISTEMEDU 2026 (Final).pdf';
 import khobarCity from '../assets/images/khobar_city.png';
 import landmarksSet from '../assets/khobar_landmarks_set_png_1775599490029.png';
 import split1 from '../assets/split_1.jfif';
