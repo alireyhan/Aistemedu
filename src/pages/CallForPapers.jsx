@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import conferencePDF from '../assets/updated doc.pdf';
-import { Calendar, CreditCard, Clock, CheckCircle, FileText, Award } from 'lucide-react';
+import { Calendar, CreditCard, Clock, CheckCircle, FileText, Award, ShieldAlert } from 'lucide-react';
 
 const CallForPapers = () => {
   return (
@@ -50,9 +50,9 @@ const CallForPapers = () => {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', gap: '2rem' }}>
           <div style={{ background: 'var(--glass-bg)', borderRadius: '24px', padding: 'clamp(2rem, 4vw, 3rem)', boxShadow: '0 10px 30px rgba(0,0,0,0.3)', border: '1px solid var(--glass-border)', backdropFilter: 'blur(12px)' }}>
-            <h2 style={{ fontSize: '2rem', marginBottom: '2.5rem', display: 'flex', alignItems: 'center', gap: '1rem', color: 'white' }}>
+            <h2 style={{ fontSize: '2.2rem', fontWeight: '800', marginBottom: '2.5rem', display: 'flex', alignItems: 'center', gap: '1rem', color: 'white' }}>
                <Calendar color="var(--primary-color)" strokeWidth={2.5} size={32} />
-               Important Dates
+               Important <span style={{ color: 'var(--primary-color)' }}>Dates</span>
             </h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                {[
@@ -62,9 +62,9 @@ const CallForPapers = () => {
                  { title: "Conference Date", date: "October 26-27, 2026", color: "white" }
                ].map((item, i) => (
                   <div key={i} style={{ padding: '1.25rem 1.75rem', background: 'rgba(0,0,0,0.2)', borderRadius: '16px', border: `1px solid rgba(255,255,255,0.05)`, borderLeft: `6px solid ${item.color}`, transition: 'transform 0.3s' }} onMouseEnter={e => e.currentTarget.style.transform = 'translateX(8px)'} onMouseLeave={e => e.currentTarget.style.transform = 'translateX(0px)'}>
-                    <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: 'white', letterSpacing: '0.5px', marginBottom: '0.4rem', textTransform: 'uppercase' }}>{item.title}</h3>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: item.color, fontWeight: '700', fontSize: '1rem' }}>
-                       <Clock size={16} /> {item.date}
+                    <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: 'white', letterSpacing: '0.5px', marginBottom: '0.5rem', textTransform: 'uppercase' }}>{item.title}</h3>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: item.color, fontWeight: '800', fontSize: '1.1rem' }}>
+                       <Clock size={18} /> {item.date}
                     </div>
                   </div>
                ))}
@@ -91,6 +91,26 @@ const CallForPapers = () => {
                     </div>
                   </div>
                ))}
+            </div>
+
+            <div style={{ 
+              marginTop: '2rem', 
+              padding: '1.5rem', 
+              background: 'rgba(243, 112, 33, 0.08)', 
+              borderRadius: '16px', 
+              border: '1px solid rgba(243, 112, 33, 0.2)',
+              borderLeft: '5px solid var(--primary-color)',
+              textAlign: 'left'
+            }}>
+              <h4 style={{ color: 'var(--primary-color)', fontSize: '1rem', fontWeight: '800', marginBottom: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                <ShieldAlert size={20} /> Important Note
+              </h4>
+              <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '0.95rem', lineHeight: '1.7', marginBottom: '1rem' }}>
+                All accepted papers that are presented at the conference, either in person or virtually, will be published in the <strong>Proceedings of the AISTEMEDU 2026 Conference</strong>. Please note that papers that are not presented during the conference will not be included in the official conference proceedings.
+              </p>
+              <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '0.95rem', lineHeight: '1.7', margin: 0 }}>
+                The conference proceedings of <strong>AISTEMEDU 2026</strong> will be submitted to the <strong>IEEE Xplore Digital Library</strong> for publication, provided that all articles meet IEEE’s scope and quality requirements.
+              </p>
             </div>
           </div>
         </div>

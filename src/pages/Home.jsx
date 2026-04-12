@@ -286,6 +286,27 @@ const Home = () => {
                      </div>
                   ))}
               </div>
+
+              <div style={{ 
+                marginTop: '1.5rem', 
+                padding: '1.2rem', 
+                background: 'rgba(243, 112, 33, 0.08)', 
+                borderRadius: '12px', 
+                border: '1px solid rgba(243, 112, 33, 0.2)',
+                borderLeft: '4px solid var(--primary-color)',
+                textAlign: 'left'
+              }}>
+                <h4 style={{ color: 'var(--primary-color)', fontSize: '0.9rem', fontWeight: '800', marginBottom: '0.6rem', textTransform: 'uppercase', letterSpacing: '1px', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <ShieldAlert size={18} /> Important Note
+                </h4>
+                <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '0.85rem', lineHeight: '1.6', marginBottom: '0.8rem' }}>
+                  All accepted papers that are presented at the conference, either in person or virtually, will be published in the <strong>Proceedings of the AISTEMEDU 2026 Conference</strong>. Please note that papers that are not presented during the conference will not be included in the official conference proceedings.
+                </p>
+                <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '0.85rem', lineHeight: '1.6', margin: 0 }}>
+                  The conference proceedings of <strong>AISTEMEDU 2026</strong> will be submitted to the <strong>IEEE Xplore Digital Library</strong> for publication, provided that all articles meet IEEE’s scope and quality requirements.
+                </p>
+              </div>
+
               <div style={{ marginTop: '1rem', textAlign: 'center' }}>
                 <Link to="/call-for-papers" className="btn btn-outline" style={{ padding: '1rem 2.5rem' }}>View All Fees →</Link>
               </div>
@@ -666,115 +687,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 5. EXPLORE KHOBAR CITY */}
-      <section className="section" style={{ background: 'transparent' }}>
-        <div className="container">
-          <motion.div variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <h2 style={{ fontSize: '3rem', color: 'white' }}>Explore <span style={{ color: 'var(--primary-color)' }}>Khobar City</span></h2>
-            <div style={{ width: '60px', height: '4px', background: 'var(--primary-color)', margin: '1rem auto' }}></div>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', marginTop: '1rem' }}>Experience the vibrant hub of the Eastern Province of Saudi Arabia.</p>
-          </motion.div>
 
-          <motion.div variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <div className="city-grid">
-              <div className="city-image-wrapper" style={{ border: 'none', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.4)', overflow: 'hidden'}}>
-                <motion.img 
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.5 }}
-                  src={split1} 
-                  alt="Khobar Corniche" 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                />
-              </div>
-              <div className="city-image-wrapper" style={{ border: 'none', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.4)', overflow: 'hidden'}}>
-                <motion.img 
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.5 }}
-                  src={split2} 
-                  alt="Ithra" 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                />
-              </div>
-              <div className="city-image-wrapper" style={{ border: 'none', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.4)', overflow: 'hidden'}}>
-                <motion.img 
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.5 }}
-                  src={split3} 
-                  alt="King Fahd Causeway" 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                />
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* 8. SPONSORED BY */}
-      <section style={{ 
-        padding: '8rem 0', 
-        background: 'linear-gradient(180deg, transparent 0%, rgba(243, 112, 33, 0.05) 50%, transparent 100%), radial-gradient(circle at 50% 50%, rgba(14, 27, 77, 1) 0%, #020617 100%)', 
-        color: 'white', 
-        borderTop: '1px solid rgba(255,255,255,0.05)',
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
-        {/* Decorative Blur Orbs */}
-        <div style={{ position: 'absolute', top: '10%', left: '10%', width: '300px', height: '300px', background: 'var(--primary-color)', opacity: 0.05, filter: 'blur(100px)', borderRadius: '50%', pointerEvents: 'none' }}></div>
-        <div style={{ position: 'absolute', bottom: '10%', right: '10%', width: '300px', height: '300px', background: 'var(--secondary-color)', opacity: 0.1, filter: 'blur(100px)', borderRadius: '50%', pointerEvents: 'none' }}></div>
-
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <motion.div variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ textAlign: 'center', marginBottom: '5rem' }}>
-            <h2 style={{ fontSize: '3rem', marginBottom: '0.5rem', color: 'white', fontWeight: '800' }}>Sponsored & Organized By</h2>
-            <div style={{ width: '80px', height: '4px', background: 'var(--primary-color)', margin: '1.5rem auto' }}></div>
-            <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>With prestigious technical co-sponsorship from IEEE</p>
-          </motion.div>
-
-          
-          <motion.div 
-            variants={staggerContainer} 
-            initial="hidden" 
-            whileInView="visible" 
-            viewport={{ once: true }}
-            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '3rem' }}
-          >
-            {/* First Row: PMU Logo Centered */}
-            <motion.div variants={cardVariants} whileHover={{ scale: 1.05 }} style={{ textAlign: 'center' }}>
-              <img 
-                src={pmuLogo} 
-                alt="Prince Mohammad Bin Fahd University" 
-                style={{ height: '120px', width: 'auto', filter: 'brightness(1.1) drop-shadow(0 0 10px rgba(0,0,0,0.5))' }} 
-              />
-              <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.9rem', marginTop: '1rem', fontWeight: '600', whiteSpace: 'nowrap' }}>Prince Mohammad Bin Fahd University</p>
-            </motion.div>
-
-
-            {/* Second Row: 3 Logos Below */}
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', gap: '4rem' }}>
-              {[
-                { src: ieeeAdvancingLogo, alt: "IEEE — Advancing Technology for Humanity", height: '70px' },
-                { src: ieeeSaudiLogo, alt: "IEEE Saudi Arabia Section", height: '70px' },
-                { src: cshsLogo, alt: "College of Sciences and Human Studies", height: '70px' },
-              ].map((logo, i) => (
-                <motion.div key={i} variants={cardVariants} whileHover={{ scale: 1.08 }} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-                  <img 
-                    src={logo.src} 
-                    alt={logo.alt} 
-                    style={{ height: logo.height, width: 'auto', filter: 'brightness(1.1) drop-shadow(0 5px 15px rgba(0,0,0,0.3))' }} 
-                  />
-                  <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.8rem', textAlign: 'center', whiteSpace: 'nowrap' }}>{logo.alt}</p>
-                </motion.div>
-
-              ))}
-            </div>
-
-          </motion.div>
-
-          <motion.p variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}
-            style={{ textAlign: 'center', color: 'rgba(255,255,255,0.5)', marginTop: '4rem', fontSize: '0.9rem' }}>
-            Prince Mohammad Bin Fahd University (PMU), Al Khobar, 31952, Kingdom of Saudi Arabia
-          </motion.p>
-        </div>
-      </section>
 
     </div>
   );

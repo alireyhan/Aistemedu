@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { Mail, MapPin, Phone, Globe, Share2, Link2 } from 'lucide-react';
 import pmuLogo from '../assets/pmulogo.png';
 import ieeeAdvancingLogo from '../assets/footer-logos/IEEE-Advancing-Technology-for-Humanity-logo-removebg-preview.png';
@@ -68,21 +69,63 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="footer-col" style={{ gridColumn: '1 / -1', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem', marginTop: '2rem', padding: '3rem 0', borderTop: '1px solid var(--glass-border)' }}>
-            <div style={{ textAlign: 'center' }}>
-              <img src={pmuLogo} alt="PMU Logo" style={{ height: '100px', width: 'auto', filter: 'brightness(1.1)' }} />
-              <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.8rem', marginTop: '0.5rem' }}>Organized & Hosted by PMU</p>
-            </div>
-            
-            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '3rem' }}>
-              <img src={ieeeAdvancingLogo} alt="IEEE Advancing Technology Logo" style={{ height: '60px', width: 'auto', filter: 'brightness(1.1)' }} />
-              <img src={ieeeSaudiLogo} alt="IEEE Saudi Arabia Logo" style={{ height: '60px', width: 'auto', filter: 'brightness(1.1)' }} />
-              <img src={cshsLogo} alt="College of Sciences and Human Studies" style={{ height: '60px', width: 'auto', filter: 'brightness(1.1)' }} />
-            </div>
-          </div>
 
 
         </div>
+
+        {/* SPONSORED & ORGANIZED SECTION - NOW PART OF GLOBAL FOOTER */}
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          style={{ 
+            marginTop: '3rem', 
+            padding: '4rem 1rem', 
+            borderTop: '1px solid rgba(255,255,255,0.05)',
+            textAlign: 'center'
+          }}
+        >
+          <div style={{ marginBottom: '3rem' }}>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', marginBottom: '0.5rem', color: 'white', fontWeight: '800' }}>Sponsored & Organized By</h2>
+            <div style={{ width: '60px', height: '3px', background: 'var(--primary-color)', margin: '1rem auto' }}></div>
+            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.95rem' }}>With prestigious technical co-sponsorship from IEEE</p>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4rem' }}>
+            {/* PMU Logo Centered */}
+            <div style={{ textAlign: 'center' }}>
+              <img 
+                src={pmuLogo} 
+                alt="Prince Mohammad Bin Fahd University" 
+                style={{ height: '140px', width: 'auto', filter: 'brightness(1.1) drop-shadow(0 0 15px rgba(0,0,0,0.5))' }} 
+              />
+              <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1rem', marginTop: '1.2rem', fontWeight: '600' }}>Prince Mohammad Bin Fahd University</p>
+            </div>
+
+            {/* Partner Logos Row */}
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', gap: '6rem' }}>
+              {[
+                { src: ieeeAdvancingLogo, alt: "IEEE — Advancing Technology for Humanity", height: '85px' },
+                { src: ieeeSaudiLogo, alt: "IEEE Saudi Arabia Section", height: '85px' },
+                { src: cshsLogo, alt: "College of Sciences and Human Studies", height: '85px' },
+              ].map((logo, i) => (
+                <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.2rem' }}>
+                  <img 
+                    src={logo.src} 
+                    alt={logo.alt} 
+                    style={{ height: logo.height, width: 'auto', filter: 'brightness(1.1) drop-shadow(0 5px 15px rgba(0,0,0,0.3))' }} 
+                  />
+                  <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.75rem', textAlign: 'center' }}>{logo.alt}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.4)', marginTop: '4rem', fontSize: '0.85rem' }}>
+            Prince Mohammad Bin Fahd University (PMU), Al Khobar, 31952, Kingdom of Saudi Arabia
+          </p>
+        </motion.div>
         
         <div className="footer-bottom">
           <p>&copy; {new Date().getFullYear()} AISTEMEDU. Organized by Prince Mohammad Bin Fahd University. All rights reserved.</p>
