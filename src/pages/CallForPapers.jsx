@@ -19,7 +19,7 @@ const CallForPapers = () => {
           </h1>
           <div style={{ width: '60px', height: '4px', background: 'var(--primary-color)', margin: '0 auto 1.5rem' }}></div>
           <p style={{ maxWidth: '900px', margin: '0 auto 1.5rem', color: 'rgba(255,255,255,0.8)', fontSize: '1.1rem', lineHeight: '1.6' }}>
-            We are pleased to announce the Call for Paper for the IEEE International Conference on AI-Driven STEM Education and Learning Technologies
+            We are pleased to announce the Call for Paper for the International Conference on AI-Driven STEM Education and Learning Technologies
             <strong style={{ color: 'white' }}> AISTEMEDU 2026</strong>. We invite authors to submit their original research, findings, and 
             innovations covering topics across our diverse tracks to contribute to the global academic community.
           </p>
@@ -33,9 +33,9 @@ const CallForPapers = () => {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem', marginBottom: '4rem' }}>
           {[
-            { icon: <FileText size={32} color="var(--secondary-color)" />, title: "Paper Submission", date: "August 15, 2026" },
-            { icon: <CheckCircle size={32} color="var(--secondary-color)" />, title: "Acceptance", date: "September 15, 2026" },
-            { icon: <Award size={32} color="var(--secondary-color)" />, title: "Camera Ready", date: "September 30, 2026" }
+            { icon: <FileText size={32} color="var(--secondary-color)" />, title: "Paper Submission", date: "July 15, 2026" },
+            { icon: <CheckCircle size={32} color="var(--secondary-color)" />, title: "Acceptance", date: "August 1, 2026" },
+            { icon: <Award size={32} color="var(--secondary-color)" />, title: "Camera Ready", date: "August 15, 2026" }
           ].map((item, idx) => (
             <div key={idx} style={{ background: 'var(--glass-bg)', borderRadius: '24px', padding: '3rem 1.5rem', textAlign: 'center', border: '1px solid var(--glass-border)', backdropFilter: 'blur(12px)', boxShadow: '0 10px 30px rgba(0,0,0,0.3)', position: 'relative' }}>
               <div style={{ width: '70px', height: '70px', background: 'var(--primary-color)', borderRadius: '50%', margin: '-60px auto 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 5px 15px rgba(243, 112, 33, 0.4)' }}>
@@ -56,9 +56,9 @@ const CallForPapers = () => {
             </h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                {[
-                 { title: "Paper Submission", date: "August 15, 2026", color: "var(--primary-color)" },
-                 { title: "Acceptance", date: "September 15, 2026", color: "white" },
-                 { title: "Camera Ready", date: "September 30, 2026", color: "var(--primary-color)" },
+                 { title: "Paper Submission", date: "July 15, 2026", color: "var(--primary-color)" },
+                 { title: "Acceptance", date: "August 1, 2026", color: "white" },
+                 { title: "Camera Ready", date: "August 15, 2026", color: "var(--primary-color)" },
                  { title: "Conference Date", date: "October 26-27, 2026", color: "white" }
                ].map((item, i) => (
                   <div key={i} style={{ padding: '1.25rem 1.75rem', background: 'rgba(0,0,0,0.2)', borderRadius: '16px', border: `1px solid rgba(255,255,255,0.05)`, borderLeft: `6px solid ${item.color}`, transition: 'transform 0.3s' }} onMouseEnter={e => e.currentTarget.style.transform = 'translateX(8px)'} onMouseLeave={e => e.currentTarget.style.transform = 'translateX(0px)'}>
@@ -78,8 +78,8 @@ const CallForPapers = () => {
             </h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                {[
-                  { title: "Non-IEEE Member", price: "$100", desc: "Full Conference Access" },
-                  { title: "IEEE Member", price: "$80", desc: "Full Conference Access" }
+                  { title: "Professional Author", price: "$300", desc: "Full Conference Access" },
+                  { title: "Student Author", price: "$200", desc: "Full Conference Access" }
                ].map((item, i) => (
                   <div key={i} style={{ padding: '1.5rem', background: 'rgba(0,0,0,0.2)', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', transition: 'all 0.3s', cursor: 'default' }} onMouseEnter={e => { e.currentTarget.style.border = '1px solid rgba(243, 112, 33, 0.4)'; e.currentTarget.style.background = 'rgba(243, 112, 33, 0.1)'; e.currentTarget.style.transform = 'translateY(-2px)' }} onMouseLeave={e => { e.currentTarget.style.border = '1px solid rgba(255,255,255,0.05)'; e.currentTarget.style.background = 'rgba(0,0,0,0.2)'; e.currentTarget.style.transform = 'translateY(0)' }}>
                     <div>
@@ -107,9 +107,6 @@ const CallForPapers = () => {
               </h4>
               <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '0.95rem', lineHeight: '1.7', marginBottom: '1rem' }}>
                 All accepted papers that are presented at the conference, either in person or virtually, will be published in the <strong>Proceedings of the AISTEMEDU 2026 Conference</strong>. Please note that papers that are not presented during the conference will not be included in the official conference proceedings.
-              </p>
-              <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '0.95rem', lineHeight: '1.7', margin: 0 }}>
-                The conference proceedings of <strong>AISTEMEDU 2026</strong> will be submitted to the <strong>IEEE Xplore Digital Library</strong> for publication, provided that all articles meet IEEE’s scope and quality requirements.
               </p>
             </div>
           </div>

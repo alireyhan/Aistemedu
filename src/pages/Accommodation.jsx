@@ -52,7 +52,7 @@ const Accommodation = () => {
         <h1 style={{ fontSize: '3rem', color: 'white', fontWeight: '800', marginBottom: '1.5rem' }}>Accommodation</h1>
         <div style={{ width: '60px', height: '4px', background: 'var(--primary-color)', margin: '0 auto 2rem' }}></div>
         <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', maxWidth: '800px', margin: '0 auto' }}>
-          Recommended hotels for the IEEE Conference organized by PMU.
+          Recommended hotels for the Conference organized by PMU.
         </p>
       </div>
 

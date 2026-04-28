@@ -125,9 +125,9 @@ const Home = () => {
             style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', textAlign: 'center' }}
           >
             {[
-              { icon: <FileText size={40} />, label: "Paper Submission", date: "August 15, 2026" },
-              { icon: <CheckCircle size={40} />, label: "Acceptance", date: "September 15, 2026" },
-              { icon: <Award size={40} />, label: "Camera Ready", date: "September 30, 2026" },
+              { icon: <FileText size={40} />, label: "Paper Submission", date: "July 15, 2026" },
+              { icon: <CheckCircle size={40} />, label: "Acceptance", date: "August 1, 2026" },
+              { icon: <Award size={40} />, label: "Camera Ready", date: "August 15, 2026" },
               { icon: <Calendar size={40} />, label: "Conference Date", date: "October 26-27, 2026" }
             ].map((stat, i) => (
               <motion.div key={i} variants={cardVariants} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
@@ -219,9 +219,9 @@ const Home = () => {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2.5rem', marginBottom: '4rem' }}>
             {[
-              { label: "Paper Submission", date: "August 15, 2026", icon: <FileUp size={30} /> },
-              { label: "Acceptance Notice", date: "September 15, 2026", icon: <ClipboardCheck size={30} /> },
-              { label: "Final Paper Submission", date: "September 30, 2026", icon: <FileCheck size={30} /> }
+              { label: "Paper Submission", date: "July 15, 2026", icon: <FileUp size={30} /> },
+              { label: "Acceptance Notice", date: "August 1, 2026", icon: <ClipboardCheck size={30} /> },
+              { label: "Final Paper Submission", date: "August 15, 2026", icon: <FileCheck size={30} /> }
             ].map((item, i) => (
               <motion.div 
                 key={i}
@@ -272,8 +272,8 @@ const Home = () => {
                </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                   {[
-                    { title: "Non-IEEE Member", price: "$100", desc: "Full Conference Access" },
-                    { title: "IEEE Member", price: "$80", desc: "Full Conference Access" }
+                    { title: "Professional Author", price: "$300", desc: "Full Conference Access" },
+                    { title: "Student Author", price: "$200", desc: "Full Conference Access" }
                   ].map((item, i) => (
                      <div key={i} style={{ padding: '1.5rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', border: '1px solid var(--glass-border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                        <div>
@@ -301,9 +301,6 @@ const Home = () => {
                 </h4>
                 <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '0.85rem', lineHeight: '1.6', marginBottom: '0.8rem' }}>
                   All accepted papers that are presented at the conference, either in person or virtually, will be published in the <strong>Proceedings of the AISTEMEDU 2026 Conference</strong>. Please note that papers that are not presented during the conference will not be included in the official conference proceedings.
-                </p>
-                <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '0.85rem', lineHeight: '1.6', margin: 0 }}>
-                  The conference proceedings of <strong>AISTEMEDU 2026</strong> will be submitted to the <strong>IEEE Xplore Digital Library</strong> for publication, provided that all articles meet IEEE’s scope and quality requirements.
                 </p>
               </div>
 

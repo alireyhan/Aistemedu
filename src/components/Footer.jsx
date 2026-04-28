@@ -2,8 +2,6 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Phone, Globe, Share2, Link2 } from 'lucide-react';
 import pmuLogo from '../assets/pmulogo.png';
-import ieeeAdvancingLogo from '../assets/footer-logos/IEEE-Advancing-Technology-for-Humanity-logo-removebg-preview.png';
-import ieeeSaudiLogo from '../assets/footer-logos/images-removebg-preview.png';
 import cshsLogo from '../assets/cshs-logo.png';
 
 
@@ -89,7 +87,6 @@ const Footer = () => {
           <div style={{ marginBottom: '3rem' }}>
             <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', marginBottom: '0.5rem', color: 'white', fontWeight: '800' }}>Sponsored & Organized By</h2>
             <div style={{ width: '60px', height: '3px', background: 'var(--primary-color)', margin: '1rem auto' }}></div>
-            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.95rem' }}>With prestigious technical co-sponsorship from IEEE</p>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4rem' }}>
@@ -106,8 +103,6 @@ const Footer = () => {
             {/* Partner Logos Row */}
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', gap: '6rem' }}>
               {[
-                { src: ieeeAdvancingLogo, alt: "IEEE — Advancing Technology for Humanity", height: '85px' },
-                { src: ieeeSaudiLogo, alt: "IEEE Saudi Arabia Section", height: '85px' },
                 { src: cshsLogo, alt: "College of Sciences and Human Studies", height: '85px' },
               ].map((logo, i) => (
                 <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.2rem' }}>

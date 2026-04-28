@@ -35,9 +35,9 @@ const Header = () => {
   }, [isMenuOpen]);
 
   const importantDates = [
-    { label: "Paper Submission", date: "August 15, 2026" },
-    { label: "Notification Date", date: "September 15, 2026" },
-    { label: "Camera Ready", date: "September 30, 2026" },
+    { label: "Paper Submission", date: "July 15, 2026" },
+    { label: "Notification Date", date: "August 1, 2026" },
+    { label: "Camera Ready", date: "August 15, 2026" },
     { label: "Conference Days", date: "October 26-27, 2026" }
   ];
 
